@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contato | PROZMALHADOS</title>
+
+<!-- Mesma fonte usada no site -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+    /* ===== RESET ===== */
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+    body {background:#000;color:#fff;}
+
+    /* ===== MENU (igual à página Produtos) ===== */
+    header {
+        width: 100%;
+        background: #111;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 2px solid #e60000;
+    }
+    nav {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+    nav h1 { color:#e60000; font-size:28px; letter-spacing:2px; }
+    nav ul { display:flex; gap:25px; align-items:center; list-style:none; }
+    nav ul li a { color:white; text-decoration:none; font-size:16px; transition:.3s; }
+    nav ul li a:hover, nav ul li a.active { color:#e60000; }
+
+    /* Carrinho no menu (contador) */
+    #cart-btn { font-size:22px; cursor:pointer; color:#fff; display:inline-flex; align-items:center; gap:8px; }
+    #cart-count {
+        background:#e60000;
+        color:#fff;
+        padding:2px 7px;
+        border-radius:50%;
+        font-size:13px;
+        display:inline-block;
+        min-width:24px;
+        text-align:center;
+    }
+
+    /* ===== TÍTULO ===== */
+    .title-section { text-align:center; padding:40px 20px; }
+    .title-section h2 { font-size:36px; color:#e60000; }
+    .title-section p { margin-top:10px; color:#ccc; font-size:18px; }
+
+    /* ===== ÁREA DE CONTATO ===== */
+    .contato-container {
+        max-width:1100px;
+        margin:40px auto;
+        padding:20px;
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:40px;
+    }
+
+    .contato-form {
+        background:#111;
+        border:2px solid #e60000;
+        border-radius:12px;
+        padding:30px;
+        width:450px;
+    }
+
+    .contato-form label { display:block; font-size:18px; margin-bottom:10px; color:#e60000; }
+    .contato-form input, .contato-form textarea {
+        width:100%; padding:12px; border-radius:8px; border:none; margin-bottom:20px; font-size:16px; background:#222; color:#fff;
+    }
+    .contato-form textarea { height:120px; resize:none; }
+
+    .btn {
+        display:inline-block; padding:12px 25px; font-size:16px; border-radius:8px;
+        background:#e60000; color:#fff; text-decoration:none; transition:.3s; border:none; cursor:pointer; font-weight:bold;
+    }
+    .btn:hover { background:#b00000; }
+
+    .info-box {
+        width:450px; background:#111; border:2px solid #e60000; border-radius:12px; padding:30px;
+    }
+    .info-box h3 { color:#e60000; margin-bottom:15px; font-size:24px; }
+    .info-item { margin-bottom:15px; font-size:18px; color:#ccc; }
+    .info-item span { color:#e60000; font-weight:bold; }
+
+    .contact-btn-container { display:flex; justify-content:center; margin:40px 0; }
+
+    footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; }
+    footer p { color:#aaa; }
+
+    /* Responsividade */
+    @media (max-width:768px){
+        .contato-form, .info-box { width:90%; }
+        nav ul { gap:12px; }
+    }
+</style>
+</head>
+<body>
+
+<!-- ===== MENU (igual ao Produtos) ===== -->
+<header>
+    <nav>
+        <h1>PROZMALHADOS</h1>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="planos.html">Planos</a></li>
+            <li><a href="produtooo.html">Produtos</a></li>
+            <li><a href="contato.html" class="active">Contato</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+
+            <!-- ÍCONE DO CARRINHO (contador) -->
+            <li>
+                <span id="cart-btn">🛒 <span id="cart-count">0</span></span>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ===== TÍTULO ===== -->
+<section class="title-section">
+    <h2>Fale Conosco</h2>
+    <p>Entre em contato com a PROZMALHADOS. Estamos aqui para te ajudar!</p>
+</section>
+
+<!-- ===== ÁREA DE CONTATO ===== -->
+<div class="contato-container">
+
+    <!-- Formulário -->
+    <div class="contato-form">
+        <label>Seu Nome:</label>
+        <input type="text" placeholder="Digite seu nome">
+
+        <label>Seu Email:</label>
+        <input type="email" placeholder="Digite seu email">
+
+        <label>Mensagem:</label>
+        <textarea placeholder="Escreva sua mensagem..."></textarea>
+
+        <button class="btn">Enviar Mensagem</button>
+    </div>
+
+    <!-- Informações -->
+    <div class="info-box">
+        <h3>Informações de Contato</h3>
+
+        <div class="info-item"><span>📍 Endereço:</span> Rua Fitness 777, Centro</div>
+        <div class="info-item"><span>📞 Telefone:</span> (11) 9999-9999</div>
+        <div class="info-item"><span>📧 Email:</span> contato@prozmalhados.com</div>
+
+        <h3>Horário de Funcionamento</h3>
+        <p style="color:#ccc;">Segunda a Sexta — 06h às 22h</p>
+        <p style="color:#ccc;">Sábado — 08h às 18h</p>
+        <p style="color:#ccc;">Domingos e feriados — Fechado</p>
+    </div>
+
+</div>
+
+<!-- BOTÃO PRODUTOS -->
+<div class="contact-btn-container">
+    <a href="feedback.html" class="btn">Deixe seu feedback</a>
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+    <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
+</footer>
+
+<!-- === SCRIPT: sincroniza contador do carrinho com localStorage === -->
+<script>
+    // Lê o carrinho salvo (se existir) e atualiza o contador
+    function updateCartCountFromStorage() {
+        try {
+            const raw = localStorage.getItem('carrinho');
+            if (!raw) {
+                document.getElementById('cart-count').textContent = '0';
+                return;
+            }
+            const arr = JSON.parse(raw);
+            if (Array.isArray(arr)) {
+                document.getElementById('cart-count').textContent = arr.length;
+            } else {
+                document.getElementById('cart-count').textContent = '0';
+            }
+        } catch (e) {
+            document.getElementById('cart-count').textContent = '0';
+        }
+    }
+
+    // atualiza ao carregar a página
+    updateCartCountFromStorage();
+
+    // se outro arquivo (ex: carrinho.js) alterar localStorage em outra aba,
+    // o evento 'storage' atualiza o contador automaticamente
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'carrinho') updateCartCountFromStorage();
+    });
+
+    // também escuta cliques no botão do menu pra efeitos futuros (não abre nada por enquanto)
+    document.getElementById('cart-btn').addEventListener('click', () => {
+        // por enquanto só atualiza o contador (no futuro podemos abrir o carrinho)
+        updateCartCountFromStorage();
+    });
+</script>
+
+</body>
+</html>
+
+
+   

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback | PROZMALHADOS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+<style>
+    /* ===== RESET ===== */
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+    body {background:#000;color:#fff;}
+
+    /* ===== MENU (IGUAL AO PRODUTOS) ===== */
+    header {
+        width: 100%;
+        background: #111;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 2px solid #e60000;
+    }
+
+    nav {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    nav h1 {
+        color: #e60000;
+        font-size: 28px;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 25px;
+        align-items: center;
+    }
+
+    nav ul li { list-style: none; }
+
+    nav ul li a {
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+        transition: .3s;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #e60000;
+    }
+
+    /* Ícone do carrinho */
+    #cart-btn {
+        font-size: 22px;
+        cursor: pointer;
+        color: #fff;
+        transition: 0.3s;
+    }
+
+    #cart-btn:hover { color:#e60000; }
+
+    /* Número do carrinho */
+    #cart-count {
+        background:#e60000;
+        padding:2px 7px;
+        border-radius:50%;
+        font-size:14px;
+        margin-left:4px;
+    }
+
+    /* ===== TÍTULO ===== */
+    .title-section {
+        text-align:center;
+        padding:40px 20px;
+    }
+    .title-section h2 {font-size:36px;color:#e60000;}
+    .title-section p {font-size:18px;color:#ccc;margin-top:10px;}
+
+    /* ===== FORMULÁRIO ===== */
+    .feedback-form {
+        max-width:600px;
+        background:#111;
+        margin:30px auto;
+        padding:30px;
+        border-radius:12px;
+        border:2px solid #e60000;
+    }
+
+    .feedback-form label {
+        color:#e60000;
+        font-size:18px;
+        margin-bottom:10px;
+        display:block;
+    }
+
+    .feedback-form input,
+    .feedback-form textarea {
+        width:100%;
+        padding:12px;
+        margin-bottom:20px;
+        border:none;
+        border-radius:8px;
+        background:#222;
+        color:white;
+        font-size:16px;
+    }
+
+    .feedback-form textarea {height:130px;resize:none;}
+
+    .btn {
+        background:#e60000;
+        padding:12px 25px;
+        border:none;
+        border-radius:8px;
+        color:white;
+        cursor:pointer;
+        transition:.3s;
+        font-size:16px;
+        font-weight:bold;
+    }
+
+    .btn:hover {background:#b00000;}
+
+    /* ===== LISTA DE FEEDBACKS ===== */
+    .feedback-list {
+        max-width:900px;
+        margin:50px auto;
+        padding:0 20px;
+    }
+
+    .feedback-item {
+        background:#111;
+        padding:20px;
+        border-radius:12px;
+        border-left:4px solid #e60000;
+        margin-bottom:20px;
+        transition:.3s;
+    }
+
+    .feedback-item:hover {
+        transform:scale(1.02);
+        box-shadow:0 0 15px #e60000;
+    }
+
+    .feedback-item h3 {color:#e60000;margin-bottom:8px;}
+    .feedback-item p {color:#ddd;line-height:1.6;}
+
+    /* ===== RODAPÉ ===== */
+    footer {
+        background:#111;
+        text-align:center;
+        padding:20px 0;
+        border-top:2px solid #e60000;
+        margin-top:60px;
+    }
+    footer p {color:#aaa;}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU IGUAL AO PRODUTOS -->
+<header>
+    <nav>
+        <h1>PROZMALHADOS</h1>
+
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="planos.html">Planos</a></li>
+            <li><a href="produtooo.html">Produtos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="feedback.html" class="active">Feedback</a></li>
+
+            <!-- CARRINHO -->
+            <li>
+                <span id="cart-btn">
+                    🛒 <span id="cart-count">0</span>
+                </span>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<!-- TÍTULO -->
+<section class="title-section">
+    <h2>Feedback dos Alunos</h2>
+    <p>Veja o que nossos membros dizem e envie o seu também!</p>
+</section>
+
+<!-- FORMULÁRIO -->
+<div class="feedback-form">
+    <label>Seu nome:</label>
+    <input type="text" placeholder="Digite seu nome">
+
+    <label>Seu feedback:</label>
+    <textarea placeholder="Escreva seu comentário..."></textarea>
+
+    <button class="btn">Enviar Feedback</button>
+</div>
+
+<!-- LISTA DE FEEDBACKS -->
+<div class="feedback-list">
+
+    <div class="feedback-item">
+        <h3>Maria</h3>
+        <p>A melhor academia, professores muito atenciosos!</p>
+    </div>
+
+    <div class="feedback-item">
+        <h3>Carlos</h3>
+        <p>Equipamentos novos e ambiente muito organizado.</p>
+    </div>
+
+</div>
+
+<!-- RODAPÉ -->
+<footer>
+    <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
+</footer>
+
+<script>
+/* === CARRINHO (MESMA FUNÇÃO DO PRODUTOS) === */
+let cartCount = 0;
+const cartCountElement = document.getElementById("cart-count");
+
+document.querySelectorAll(".add-cart").forEach(button => {
+    button.addEventListener("click", () => {
+        cartCount++;
+        cartCountElement.textContent = cartCount;
+    });
+});
+</script>
+
+</body>
+</html>
+
+
+
+    
+    
