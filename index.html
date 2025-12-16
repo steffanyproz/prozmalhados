@@ -220,19 +220,25 @@
 
         /* ===== RESPONSIVIDADE ===== */
         @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
             nav ul {
+                flex-direction: column;
                 gap: 12px;
             }
-
+            header {
+                position: relative; /* para não sobrepor conteúdo */
+            }
             .hero {
                 height: 70vh;
                 background-position: center right -50px;
             }
-
             .hero-content h2 {
                 font-size: 32px;
             }
-
             .dif-card {
                 width: 90%;
             }
@@ -318,3 +324,4 @@
 
 </body>
 </html>
+
