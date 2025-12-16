@@ -8,11 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-    /* ===== RESET ===== */
+    
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
     body {background:#000;color:#fff;}
 
-    /* ===== MENU ===== */
+    
     header {
         width: 100%;
         background: #111;
@@ -57,7 +57,7 @@
     nav ul li a:hover,
     nav ul li a.active { color:#e60000; }
 
-    /* Ícone do carrinho */
+   
     #cart-btn {
         font-size: 22px;
         cursor: pointer;
@@ -77,7 +77,7 @@
         text-align:center;
     }
 
-    /* ===== TÍTULO ===== */
+    
     .title-section {
         text-align:center;
         padding:40px 20px;
@@ -85,7 +85,6 @@
     .title-section h2 {font-size:36px;color:#e60000;}
     .title-section p {font-size:18px;color:#ccc;margin-top:10px;}
 
-    /* ===== FORMULÁRIO ===== */
     .feedback-form {
         max-width:600px;
         background:#111;
@@ -130,7 +129,7 @@
 
     .btn:hover {background:#b00000;}
 
-    /* ===== LISTA DE FEEDBACKS ===== */
+   
     .feedback-list {
         max-width:900px;
         margin:50px auto;
@@ -154,7 +153,7 @@
     .feedback-item h3 {color:#e60000;margin-bottom:8px;}
     .feedback-item p {color:#ddd;line-height:1.6;}
 
-    /* ===== RODAPÉ ===== */
+   
     footer {
         background:#111;
         text-align:center;
@@ -164,7 +163,7 @@
     }
     footer p {color:#aaa;}
 
-    /* ===== RESPONSIVO ===== */
+  
     @media (max-width: 768px) {
         nav {
             flex-direction: column;
@@ -182,7 +181,7 @@
 
 <body>
 
-<!-- MENU -->
+
 <header>
     <nav>
         <h1>PROZMALHADOS</h1>
@@ -194,7 +193,7 @@
             <li><a href="contato.html">Contato</a></li>
             <li><a href="feedback.html" class="active">Feedback</a></li>
 
-            <!-- CARRINHO -->
+            
             <li>
                 <span id="cart-btn">
                     🛒 <span id="cart-count">0</span>
@@ -204,13 +203,13 @@
     </nav>
 </header>
 
-<!-- TÍTULO -->
+
 <section class="title-section">
     <h2>Feedback dos Alunos</h2>
     <p>Veja o que nossos membros dizem e envie o seu também!</p>
 </section>
 
-<!-- FORMULÁRIO -->
+
 <div class="feedback-form">
     <label>Seu nome:</label>
     <input type="text" placeholder="Digite seu nome">
@@ -221,7 +220,7 @@
     <button class="btn">Enviar Feedback</button>
 </div>
 
-<!-- LISTA DE FEEDBACKS -->
+
 <div class="feedback-list">
     <div class="feedback-item">
         <h3>Maria</h3>
@@ -233,13 +232,13 @@
     </div>
 </div>
 
-<!-- RODAPÉ -->
+
 <footer>
     <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
 </footer>
 
 <script>
-/* ===== CARRINHO ===== */
+
 function updateCartCountFromStorage() {
     try {
         const raw = localStorage.getItem('carrinho');
@@ -277,4 +276,5 @@ document.getElementById('cart-btn').addEventListener('click', () => {
 
     
     
+
 
