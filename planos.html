@@ -5,50 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Planos | PROZMALHADOS</title>
 
-<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-    /* ===== RESET ===== */
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
     body {background:#000;color:#fff;}
 
-    /* ===== HEADER & NAV ===== */
+    /* HEADER & NAV */
     header {
         width: 100%;
         background: #111;
         padding: 20px 0;
         position: sticky;
         top: 0;
-        z-index: 999;
+        z-index: 1001; /* maior que o overlay */
         border-bottom: 2px solid #e60000;
     }
-
-    nav {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-        flex-wrap: wrap;
-    }
-
+    nav { max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:0 20px;flex-wrap:wrap; }
     nav h1 { color:#e60000; font-size:28px; letter-spacing:2px; font-weight:bold; }
-
     nav ul { display:flex; gap:25px; align-items:center; flex-wrap: wrap; }
-
     nav ul li { list-style:none; }
-
     nav ul li a { color:white; font-size:16px; text-decoration:none; transition:.3s; }
-
     nav ul li a:hover, nav ul li a.active { color:#e60000; }
-
     #cart-btn { font-size:22px; cursor:pointer; color:#fff; display:inline-flex; align-items:center; }
-
     #cart-btn:hover { color:#e60000; }
 
-    /* ===== CARRINHO ===== */
+    /* CARRINHO */
+    .overlay {
+        position: fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background: rgba(0,0,0,0.6);
+        opacity:0;
+        visibility:hidden;
+        transition:0.3s;
+        z-index:1000;
+    }
+    .overlay.active { opacity:1; visibility:visible; }
+
     .cart {
         width: 350px;
         height: 100vh;
@@ -59,23 +55,21 @@
         padding: 20px;
         transition: 0.4s ease;
         border-left: 3px solid #e60000;
-        z-index: 1000;
+        z-index:1001;
     }
-
     .cart.open { right:0; }
-
     .cart h2 { margin-bottom:15px; color:#e60000; }
     .cart-items { max-height:70vh; overflow-y:auto; }
     .cart-item { padding:10px; border-bottom:1px solid #444; }
     .cart-total { margin-top:20px; font-size:18px; font-weight:bold; color:#fff; }
     .close-cart { background:#e60000; padding:8px 15px; border:none; cursor:pointer; margin-top:20px; width:100%; font-weight:700; }
 
-    /* ===== TÍTULO ===== */
+    /* TÍTULO */
     .title-section { text-align:center; margin-top:40px; padding:20px; }
     .title-section h2 { font-size:36px; margin-bottom:10px; color:#e60000; }
     .title-section p { color:#ccc; font-size:18px; }
 
-    /* ===== PLANOS ===== */
+    /* PLANOS */
     .planos-container {
         max-width: 1200px;
         margin: 50px auto;
@@ -85,7 +79,6 @@
         flex-wrap: wrap;
         padding: 0 20px;
     }
-
     .card {
         background: #111;
         width: 300px;
@@ -95,36 +88,20 @@
         text-align: center;
         transition: .4s;
     }
-
     .card:hover { transform: scale(1.05); box-shadow: 0 0 20px #e60000; }
-
     .card h3 { color: #e60000; font-size:26px; margin-bottom:15px; }
-
     .price { font-size:40px; font-weight:bold; margin:20px 0; }
     .price span { font-size:20px; color:#e60000; }
-
     .card ul { text-align:left; margin-top:20px; font-size:15px; color:#ccc; }
     .card ul li { margin-bottom:10px; list-style:none; }
-
-    .btn {
-        margin-top:25px;
-        display:inline-block;
-        padding:12px 25px;
-        border-radius:8px;
-        background:#e60000;
-        color:#fff;
-        text-decoration:none;
-        font-weight:bold;
-        transition:.3s;
-    }
+    .btn { margin-top:25px; display:inline-block; padding:12px 25px; border-radius:8px; background:#e60000; color:#fff; text-decoration:none; font-weight:bold; transition:.3s; }
     .btn:hover { background:#b00000; }
-
     .contact-btn-container { display:flex; justify-content:center; margin:40px 0; }
 
-    /* ===== RODAPÉ ===== */
+    /* RODAPÉ */
     footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; color:#aaa; }
 
-    /* ===== RESPONSIVO ===== */
+    /* RESPONSIVO */
     @media(max-width:768px){
         nav { flex-direction: column; align-items: center; }
         nav ul { flex-direction: column; gap:12px; }
@@ -136,7 +113,7 @@
 
 <body>
 
-<!-- ===== MENU ===== -->
+<!-- MENU -->
 <header>
     <nav>
         <h1>PROZMALHADOS</h1>
@@ -151,7 +128,10 @@
     </nav>
 </header>
 
-<!-- ===== CARRINHO LATERAL ===== -->
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
+
+<!-- CARRINHO -->
 <div class="cart" id="cart">
     <h2>Seu Carrinho</h2>
     <div class="cart-items" id="cart-items"></div>
@@ -159,13 +139,13 @@
     <button class="close-cart" id="close-cart">Fechar</button>
 </div>
 
-<!-- ===== TÍTULO ===== -->
+<!-- TÍTULO -->
 <section class="title-section">
     <h2>Nossos Planos</h2>
     <p>Escolha o plano perfeito para você conquistar seus resultados!</p>
 </section>
 
-<!-- ===== CARDS ===== -->
+<!-- CARDS -->
 <div class="planos-container">
     <div class="card">
         <h3>Básico</h3>
@@ -208,21 +188,32 @@
     <a href="produtooo.html" class="btn">Produtos</a>
 </div>
 
-<!-- ===== RODAPÉ ===== -->
+<!-- RODAPÉ -->
 <footer>
     <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
 </footer>
 
-<!-- ===== SCRIPT DO CARRINHO ===== -->
+<!-- SCRIPT -->
 <script src="carrinho.js"></script>
 <script>
-    // Abrir/Fechar carrinho
     const cartBtn = document.getElementById('cart-btn');
     const cart = document.getElementById('cart');
     const closeCart = document.getElementById('close-cart');
+    const overlay = document.getElementById('overlay');
 
-    cartBtn.addEventListener('click', () => { cart.classList.add('open'); });
-    closeCart.addEventListener('click', () => { cart.classList.remove('open'); });
+    function openCart() {
+        cart.classList.add('open');
+        overlay.classList.add('active');
+    }
+
+    function closeCartFunc() {
+        cart.classList.remove('open');
+        overlay.classList.remove('active');
+    }
+
+    cartBtn.addEventListener('click', openCart);
+    closeCart.addEventListener('click', closeCartFunc);
+    overlay.addEventListener('click', closeCartFunc);
 </script>
 
 </body>
