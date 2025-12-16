@@ -1,344 +1,255 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planos | PROZMALHADOS</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contato | PROZMALHADOS</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
+<style>
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+    body {background:#000;color:#fff;}
 
-        body {
-            background: #000;
-            color: white;
-        }
+    /* ===== MENU ===== */
+    header {
+        width: 100%;
+        background: #111;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 2px solid #e60000;
+    }
 
-        /* ===== MENU ===== (MESMO DA INDEX) */
-        header {
-            width: 100%;
-            background: #111;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            border-bottom: 2px solid #e60000;
-        }
+    nav {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
 
+    nav h1 { 
+        color:#e60000; 
+        font-size:28px; 
+        letter-spacing:2px; 
+        font-weight:bold;
+    }
+
+    nav ul { 
+        display:flex; 
+        gap:25px; 
+        align-items:center; 
+        list-style:none; 
+    }
+
+    nav ul li a { 
+        color:white; 
+        text-decoration:none; 
+        font-size:16px; 
+        transition:.3s; 
+    }
+
+    nav ul li a:hover, nav ul li a.active { 
+        color:#e60000; 
+    }
+
+    #cart-btn { 
+        font-size:22px; 
+        cursor:pointer; 
+        color:#fff; 
+        display:inline-flex; 
+        align-items:center; 
+        gap:8px; 
+    }
+
+    #cart-count {
+        background:#e60000;
+        color:#fff;
+        padding:2px 7px;
+        border-radius:50%;
+        font-size:13px;
+        display:inline-block;
+        min-width:24px;
+        text-align:center;
+    }
+
+    /* ===== TÍTULO ===== */
+    .title-section { text-align:center; padding:40px 20px; }
+    .title-section h2 { font-size:36px; color:#e60000; }
+    .title-section p { margin-top:10px; color:#ccc; font-size:18px; }
+
+    /* ===== CONTATO ===== */
+    .contato-container {
+        max-width:1100px;
+        margin:40px auto;
+        padding:20px;
+        display:flex;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:40px;
+    }
+
+    .contato-form {
+        background:#111;
+        border:2px solid #e60000;
+        border-radius:12px;
+        padding:30px;
+        width:450px;
+    }
+
+    .contato-form label { display:block; font-size:18px; margin-bottom:10px; color:#e60000; }
+    .contato-form input, .contato-form textarea {
+        width:100%; padding:12px; border-radius:8px; border:none; margin-bottom:20px; font-size:16px; background:#222; color:#fff;
+    }
+    .contato-form textarea { height:120px; resize:none; }
+
+    .btn {
+        display:inline-block; padding:12px 25px; font-size:16px; border-radius:8px;
+        background:#e60000; color:#fff; text-decoration:none; transition:.3s; border:none; cursor:pointer; font-weight:bold;
+    }
+    .btn:hover { background:#b00000; }
+
+    .info-box {
+        width:450px; background:#111; border:2px solid #e60000; border-radius:12px; padding:30px;
+    }
+    .info-box h3 { color:#e60000; margin-bottom:15px; font-size:24px; }
+    .info-item { margin-bottom:15px; font-size:18px; color:#ccc; }
+    .info-item span { color:#e60000; font-weight:bold; }
+
+    .contact-btn-container { display:flex; justify-content:center; margin:40px 0; }
+
+    footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; }
+    footer p { color:#aaa; }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 767px) {
         nav {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            padding: 0 20px;
+            gap: 15px;
         }
-
-        nav h1 {
-            color: #e60000;
-            letter-spacing: 2px;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
         nav ul {
-            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        /* Header ocupa fluxo normal para não sobrepor conteúdo */
+        header {
+            position: relative;
+        }
+        .contato-form, .info-box { width:90%; }
+    }
+
+    @media (min-width: 768px) {
+        nav {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        nav ul {
+            flex-direction: row;
             gap: 25px;
-            align-items: center;
         }
-
-        nav ul li {
-            list-style: none;
+        header {
+            position: sticky;
         }
-
-        nav ul li a {
-            color: white;
-            font-size: 16px;
-            text-decoration: none;
-            transition: .3s;
-        }
-
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: #e60000;
-        }
-
-        /* ÍCONE DO CARRINHO */
-        #cart-btn {
-            font-size: 22px;
-            cursor: pointer;
-            color: #fff;
-            transition: 0.3s;
-        }
-
-        #cart-btn:hover {
-            color: #e60000;
-        }
-
-        /* ===== CARRINHO LATERAL ===== (MESMO DA INDEX) */
-        .cart {
-            width: 350px;
-            height: 100vh;
-            background: #111;
-            position: fixed;
-            top: 0;
-            right: -350px;
-            padding: 20px;
-            transition: 0.4s ease;
-            border-left: 3px solid #e60000;
-            z-index: 1000;
-        }
-
-        .cart.open {
-            right: 0;
-        }
-
-        .cart h2 {
-            margin-bottom: 15px;
-            color: #e60000;
-        }
-
-        .cart-items {
-            max-height: 70vh;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            padding: 10px;
-            border-bottom: 1px solid #444;
-        }
-
-        .cart-total {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
-
-        .close-cart {
-            background: #e60000;
-            padding: 8px 15px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            width: 100%;
-            font-weight: 700;
-        }
-
-        /* ===== TÍTULO ===== */
-        .title-section {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-        }
-
-        .title-section h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #e60000;
-        }
-
-        .title-section p {
-            color: #ccc;
-            font-size: 18px;
-        }
-
-        /* ===== PLANOS ===== */
-        .planos-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            padding: 0 20px;
-        }
-
-        .card {
-            background: #111;
-            width: 300px;
-            padding: 25px;
-            border: 2px solid #e60000;
-            border-radius: 12px;
-            text-align: center;
-            transition: .4s;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #e60000;
-        }
-
-        .card h3 {
-            color: #e60000;
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 40px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .price span {
-            font-size: 20px;
-            color: #e60000;
-        }
-
-        .card ul {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 15px;
-            color: #ccc;
-        }
-
-        .card ul li {
-            margin-bottom: 10px;
-            list-style: none;
-        }
-
-        .btn {
-            margin-top: 25px;
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 8px;
-            background: #e60000;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: .3s;
-        }
-
-        .btn:hover {
-            background: #b00000;
-        }
-
-        .contact-btn-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        /* ===== RODAPÉ ===== */
-        footer {
-            background: #111;
-            text-align: center;
-            padding: 20px 0;
-            border-top: 2px solid #e60000;
-            margin-top: 60px;
-        }
-
-        footer p {
-            color: #aaa;
-            font-size: 14px;
-        }
-    </style>
+    }
+</style>
 </head>
-
 <body>
 
-    <!-- ===== MENU ===== -->
-    <header>
-        <nav>
-            <h1>PROZMALHADOS</h1>
+<header>
+    <nav>
+        <h1>PROZMALHADOS</h1>
 
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="planos.html" class="active">Planos</a></li>
-                <li><a href="produtooo.html">Produtos</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="planos.html">Planos</a></li>
+            <li><a href="produtooo.html">Produtos</a></li>
+            <li><a href="contato.html" class="active">Contato</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li>
+                <span id="cart-btn">🛒 <span id="cart-count">0</span></span>
+            </li>
+        </ul>
+    </nav>
+</header>
 
-                <!-- ÍCONE DO CARRINHO -->
-                <li><span id="cart-btn">🛒</span></li>
-            </ul>
-        </nav>
-    </header>
+<section class="title-section">
+    <h2>Fale Conosco</h2>
+    <p>Entre em contato com a PROZMALHADOS. Estamos aqui para te ajudar!</p>
+</section>
 
-    <!-- ===== CARRINHO LATERAL ===== -->
-    <div class="cart" id="cart">
-        <h2>Seu Carrinho</h2>
-        <div class="cart-items" id="cart-items"></div>
+<div class="contato-container">
 
-        <p class="cart-total" id="cart-total">Total: R$ 0,00</p>
+    <div class="contato-form">
+        <label>Seu Nome:</label>
+        <input type="text" placeholder="Digite seu nome">
 
-        <button class="close-cart" id="close-cart">Fechar</button>
+        <label>Seu Email:</label>
+        <input type="email" placeholder="Digite seu email">
+
+        <label>Mensagem:</label>
+        <textarea placeholder="Escreva sua mensagem..."></textarea>
+
+        <button class="btn">Enviar Mensagem</button>
     </div>
 
-    <!-- ===== TÍTULO ===== -->
-    <section class="title-section">
-        <h2>Nossos Planos</h2>
-        <p>Escolha o plano perfeito para você conquistar seus resultados!</p>
-    </section>
+    <div class="info-box">
+        <h3>Informações de Contato</h3>
 
-    <!-- ===== CARDS ===== -->
-    <div class="planos-container">
+        <div class="info-item"><span>📍 Endereço:</span> Rua Fitness 777, Centro</div>
+        <div class="info-item"><span>📞 Telefone:</span> (11) 9999-9999</div>
+        <div class="info-item"><span>📧 Email:</span> contato@prozmalhados.com</div>
 
-        <div class="card">
-            <h3>Básico</h3>
-            <p class="price">R$49<span>/mês</span></p>
-
-            <ul>
-                <li>✔ Acesso à musculação</li>
-                <li>✔ Horário comercial</li>
-                <li>✔ Ficha simples</li>
-                <li>✖ Sem personal</li>
-            </ul>
-
-            <a href="#" class="btn">Assinar Agora</a>
-        </div>
-
-        <div class="card">
-            <h3>Intermediário</h3>
-            <p class="price">R$79<span>/mês</span></p>
-
-            <ul>
-                <li>✔ Acesso total</li>
-                <li>✔ Aulas coletivas</li>
-                <li>✔ Ficha personalizada</li>
-                <li>✖ 1 avaliação física/mês</li>
-            </ul>
-
-            <a href="#" class="btn">Assinar Agora</a>
-        </div>
-
-        <div class="card">
-            <h3>Premium</h3>
-            <p class="price">R$119<span>/mês</span></p>
-
-            <ul>
-                <li>✔ Acesso 24h</li>
-                <li>✔ Personal incluso</li>
-                <li>✔ Avaliação ilimitada</li>
-                <li>✔ Área VIP</li>
-            </ul>
-
-            <a href="#" class="btn">Assinar Agora</a>
-        </div>
-
+        <h3>Horário de Funcionamento</h3>
+        <p style="color:#ccc;">Segunda a Sexta — 06h às 22h</p>
+        <p style="color:#ccc;">Sábado — 08h às 18h</p>
+        <p style="color:#ccc;">Domingos e feriados — Fechado</p>
     </div>
 
-    <div class="contact-btn-container">
-        <a href="produtooo.html" class="btn">Produtos</a>
-    </div>
+</div>
 
-    <!-- ===== RODAPÉ ===== -->
-    <footer>
-        <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
-    </footer>
+<div class="contact-btn-container">
+    <a href="feedback.html" class="btn">Deixe seu feedback</a>
+</div>
 
-    <!-- SCRIPT DO CARRINHO -->
-    <script src="carrinho.js"></script>
+<footer>
+    <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
+</footer>
+
+<script>
+    function updateCartCountFromStorage() {
+        try {
+            const raw = localStorage.getItem('carrinho');
+            if (!raw) {
+                document.getElementById('cart-count').textContent = '0';
+                return;
+            }
+            const arr = JSON.parse(raw);
+            if (Array.isArray(arr)) {
+                document.getElementById('cart-count').textContent = arr.length;
+            } else {
+                document.getElementById('cart-count').textContent = '0';
+            }
+        } catch (e) {
+            document.getElementById('cart-count').textContent = '0';
+        }
+    }
+
+    updateCartCountFromStorage();
+
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'carrinho') updateCartCountFromStorage();
+    });
+
+    document.getElementById('cart-btn').addEventListener('click', () => {
+        updateCartCountFromStorage();
+    });
+</script>
 
 </body>
 </html>
+
 
