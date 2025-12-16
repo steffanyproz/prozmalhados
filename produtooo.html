@@ -2,208 +2,187 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produtos | PROZMALHADOS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 /* ===== RESET ===== */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-    background: #000;
-    color: #fff;
+  background: #000;
+  color: #fff;
 }
 
 /* ===== HEADER ===== */
 header {
-    background: #111;
-    border-bottom: 2px solid #e60000;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+  background: #111;
+  border-bottom: 2px solid #e60000;
 }
 
-/* ===== NAV ===== */
 nav {
-    max-width: 1200px;
-    margin: auto;
-    padding: 15px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  gap: 10px;
 }
 
 nav h1 {
-    color: #e60000;
-    font-size: 26px;
+  color: #e60000;
+  font-size: 22px;
 }
 
 nav ul {
-    display: flex;
-    gap: 20px;
-    list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
 }
 
-/* Links */
-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
 }
 
-nav a.active {
-    color: #e60000;
+nav ul li a.active {
+  color: #e60000;
 }
 
-/* Carrinho */
 #cart-btn {
-    font-size: 22px;
+  font-size: 18px;
 }
 
 /* ===== TÍTULO ===== */
 .title-section {
-    text-align: center;
-    padding: 30px 15px;
+  text-align: center;
+  padding: 25px 15px;
 }
 
 .title-section h2 {
-    font-size: 32px;
-    color: #e60000;
+  font-size: 24px;
+  color: #e60000;
 }
 
 .title-section p {
-    color: #ccc;
-    margin-top: 8px;
+  font-size: 14px;
+  color: #ccc;
+  margin-top: 6px;
 }
 
 /* ===== PRODUTOS ===== */
 .produtos-container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 15px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 25px;
+  display: flex;
+  flex-direction: column; /* 1 POR LINHA NO CELULAR */
+  gap: 20px;
+  padding: 15px;
 }
 
-/* Card */
+/* CARD */
 .produto-card {
-    background: #111;
-    border: 2px solid #e60000;
-    border-radius: 12px;
-    padding: 15px;
-    text-align: center;
+  background: #111;
+  border: 2px solid #e60000;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
 }
 
-/* Imagem */
+/* IMAGEM */
 .img-container {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    border-radius: 10px;
-    position: relative;
+  width: 100%;
+  height: 180px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }
 
 .img-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.8s;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.8s;
 }
 
 .img-container img.active {
-    opacity: 1;
+  opacity: 1;
 }
 
 .produto-card h3 {
-    color: #e60000;
-    margin-top: 12px;
+  margin-top: 12px;
+  color: #e60000;
+  font-size: 18px;
 }
 
 .produto-card h4 {
-    margin: 8px 0 15px;
+  margin: 8px 0 12px;
+  font-size: 16px;
 }
 
-/* Botão */
+/* BOTÃO */
 .btn {
-    width: 100%;
-    padding: 14px;
-    background: #e60000;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
+  width: 100%;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  background: #e60000;
+  color: #fff;
+  font-weight: bold;
 }
 
 /* ===== FOOTER ===== */
 footer {
-    background: #111;
-    padding: 15px;
-    text-align: center;
-    border-top: 2px solid #e60000;
-    margin-top: 40px;
+  background: #111;
+  border-top: 2px solid #e60000;
+  text-align: center;
+  padding: 15px;
+  margin-top: 30px;
+  font-size: 13px;
+  color: #aaa;
 }
 
-/* ================= RESPONSIVO ================= */
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+  nav {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-/* Tablets */
-@media (max-width: 1024px) {
-    .produtos-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  nav h1 {
+    font-size: 26px;
+  }
+
+  .produtos-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .produto-card {
+    width: 48%;
+  }
 }
 
-/* CELULAR (PRINCIPAL) */
-@media (max-width: 768px) {
+/* ===== DESKTOP ===== */
+@media (min-width: 1024px) {
+  .produto-card {
+    width: 23%;
+  }
 
-    nav {
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    .title-section h2 {
-        font-size: 26px;
-    }
-
-    .produtos-container {
-        grid-template-columns: 1fr; /* 1 produto por linha */
-    }
-
-    .img-container {
-        height: 180px;
-    }
-}
-
-/* Celulares pequenos */
-@media (max-width: 480px) {
-
-    nav h1 {
-        font-size: 22px;
-    }
-
-    nav a {
-        font-size: 14px;
-    }
-
-    .img-container {
-        height: 160px;
-    }
+  .title-section h2 {
+    font-size: 32px;
+  }
 }
 </style>
 </head>
@@ -211,65 +190,67 @@ footer {
 <body>
 
 <header>
-<nav>
+  <nav>
     <h1>PROZMALHADOS</h1>
     <ul>
-        <li><a href="#">Início</a></li>
-        <li><a href="#">Planos</a></li>
-        <li><a href="#" class="active">Produtos</a></li>
-        <li><a href="#">Contato</a></li>
-        <li><a href="#">Feedback</a></li>
-        <li id="cart-btn">🛒 <span id="cart-count">0</span></li>
+      <li><a href="#">Início</a></li>
+      <li><a href="#">Planos</a></li>
+      <li><a href="#" class="active">Produtos</a></li>
+      <li><a href="#">Contato</a></li>
+      <li><a href="#">Feedback</a></li>
+      <li id="cart-btn">🛒 <span id="cart-count">0</span></li>
     </ul>
-</nav>
+  </nav>
 </header>
 
 <section class="title-section">
-    <h2>Nossos Produtos</h2>
-    <p>Confira os melhores produtos de academia disponíveis para você!</p>
+  <h2>Nossos Produtos</h2>
+  <p>Confira os melhores produtos de academia disponíveis para você</p>
 </section>
 
 <div class="produtos-container">
 
-<div class="produto-card">
+  <div class="produto-card">
     <div class="img-container">
-        <img src="https://images.tcdn.com.br/img/img_prod/999784/anilha_texturizada_10kg_1105_2_443257e96b6aae9f7042c37b3701a164.png" class="active">
-        <img src="https://img.irroba.com.br/fit-in/250x250/filters:fill(fff):quality(80)/jfitspor/catalog/pesos/anilhas/ferro/anilha-de-ferro-10kg.jpg">
+      <img src="https://images.tcdn.com.br/img/img_prod/999784/anilha_texturizada_10kg_1105_2_443257e96b6aae9f7042c37b3701a164.png" class="active">
+      <img src="https://img.irroba.com.br/fit-in/250x250/filters:fill(fff):quality(80)/jfitspor/catalog/pesos/anilhas/ferro/anilha-de-ferro-10kg.jpg">
     </div>
     <h3>Anilha de 10kg</h3>
     <h4>R$130</h4>
     <button class="btn add-cart">Adicionar ao Carrinho</button>
-</div>
+  </div>
 
 </div>
 
 <footer>
-    <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
+  © 2025 PROZMALHADOS — Todos os direitos reservados.
 </footer>
 
 <script>
-/* Slide imagens */
+/* SLIDE */
 document.querySelectorAll('.produto-card').forEach(card => {
-    const imgs = card.querySelectorAll('img');
-    let index = 0;
-    setInterval(() => {
-        imgs[index].classList.remove('active');
-        index = (index + 1) % imgs.length;
-        imgs[index].classList.add('active');
-    }, 3000);
+  const imgs = card.querySelectorAll('img');
+  let i = 0;
+  setInterval(() => {
+    imgs[i].classList.remove('active');
+    i = (i + 1) % imgs.length;
+    imgs[i].classList.add('active');
+  }, 3000);
 });
 
-/* Carrinho */
+/* CARRINHO */
 let count = 0;
 document.querySelectorAll('.add-cart').forEach(btn => {
-    btn.onclick = () => {
-        count++;
-        document.getElementById('cart-count').innerText = count;
-    }
+  btn.onclick = () => {
+    count++;
+    document.getElementById('cart-count').innerText = count;
+  };
 });
 </script>
 
 </body>
 </html>
+
+
 
 
