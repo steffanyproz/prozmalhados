@@ -27,20 +27,21 @@
         border-bottom: 2px solid #e60000;
     }
 
-    nav {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-    }
+  nav {
+    display: flex;
+    flex-direction: column;   /* celular */
+    align-items: center;
+    gap: 15px;
+}
 
-    nav h1 {
-        color: #e60000;
-        letter-spacing: 2px;
-        font-size: 28px;
-        font-weight: bold;
+nav ul {
+    display: flex;
+    flex-direction: column;   /* UM EMBAIXO DO OUTRO */
+    align-items: center;
+    gap: 10px;
+    list-style: none;
+}
+
     }
 
     nav ul {
@@ -190,6 +191,17 @@
         border-top:2px solid #e60000;
         margin-top:60px;
     }
+@media (min-width: 768px) {
+    nav {
+        flex-direction: row;  /* desktop */
+        justify-content: space-between;
+    }
+
+    nav ul {
+        flex-direction: row;  /* desktop */
+        gap: 25px;
+    }
+}
 
     footer p {color:#aaa;}
 
@@ -357,3 +369,4 @@ document.querySelectorAll(".add-cart").forEach(button => {
 
 </body>
 </html>
+
