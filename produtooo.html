@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,133 +8,218 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Produtos | PROZMALHADOS</title>
 
+<!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-/* ===== RESET ===== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
+    /* ===== RESET ===== */
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+    body {background:#000;color:#fff;}
 
-body {
-    background: #000;
-    color: #fff;
-}
+    /* ===== MENU ===== */
+    header {
+        width: 100%;
+        background: #111;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 2px solid #e60000;
+    }
 
-/* ===== HEADER ===== */
-header {
-    background: #111;
-    border-bottom: 2px solid #e60000;
-}
-
-/* ===== NAV ===== */
-nav {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;      /* MOBILE FIRST */
-    align-items: center;
-    gap: 15px;
-}
-
-nav h1 {
-    color: #e60000;
-    font-size: 26px;
-}
-
-/* MENU LISTA */
-nav ul {
-    display: flex;
-    flex-direction: column;      /* 🔥 UM EMBAIXO DO OUTRO */
-    gap: 10px;
-    list-style: none;
-    align-items: center;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-}
-
-nav ul li a.active {
-    color: #e60000;
-}
-
-/* CARRINHO */
-#cart-btn {
-    font-size: 18px;
-}
-
-/* ===== DESKTOP ===== */
-@media (min-width: 768px) {
     nav {
-        flex-direction: row;
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
         justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    nav h1 {
+        color: #e60000;
+        letter-spacing: 2px;
+        font-size: 28px;
+        font-weight: bold;
     }
 
     nav ul {
-        flex-direction: row;      /* VOLTA PRA LINHA */
+        display: flex;
         gap: 25px;
+        align-items: center;
+    }
+
+    nav ul li {
+        list-style: none;
     }
 
     nav ul li a {
+        color: white;
         font-size: 16px;
+        text-decoration: none;
+        transition: .3s;
     }
 
+    nav ul li a:hover,
+    nav ul li a.active {
+        color: #e60000;
+    }
+
+    /* Botão central */
+    .contact-btn-container {
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    /* Ícone do carrinho */
     #cart-btn {
-        font-size: 20px;
+        font-size: 22px;
+        cursor: pointer;
+        color: #fff;
+        transition: 0.3s;
     }
-}
 
-/* ===== RESTO DO SITE (NORMAL) ===== */
-.title-section {
-    text-align: center;
-    padding: 40px 20px;
-}
+    #cart-btn:hover {
+        color: #e60000;
+    }
 
-.title-section h2 {
-    color: #e60000;
-    font-size: 32px;
-}
+    /* Número do carrinho */
+    #cart-count {
+        background:#e60000;
+        padding:2px 7px;
+        border-radius:50%;
+        font-size:14px;
+        margin-left:4px;
+    }
 
-.title-section p {
-    color: #ccc;
-    margin-top: 8px;
-}
+    /* ===== TÍTULO ===== */
+    .title-section {
+        text-align:center;
+        padding:40px 20px;
+    }
 
-.produtos-container {
-    padding: 20px;
-}
+    .title-section h2 {
+        font-size:36px;
+        color:#e60000;
+    }
+
+    .title-section p {
+        margin-top:10px;
+        font-size:18px;
+        color:#ccc;
+    }
+
+    /* ===== GRID DE PRODUTOS ===== */
+    .produtos-container {
+        max-width:1200px;
+        margin:40px auto;
+        padding:0 20px;
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+        gap:30px;
+    }
+
+    .produto-card {
+        background:#111;
+        border:2px solid #e60000;
+        border-radius:12px;
+        padding:20px;
+        text-align:center;
+        overflow:hidden;
+        position:relative;
+        transition:.3s;
+    }
+
+    .produto-card:hover {
+        transform:scale(1.05);
+        box-shadow:0 0 20px #e60000;
+    }
+
+    .produto-card h3 {
+        color:#e60000;
+        margin:15px 0;
+        font-size:20px;
+    }
+
+    .btn {
+        padding:10px 20px;
+        background:#e60000;
+        color:#fff;
+        border:none;
+        border-radius:8px;
+        text-decoration:none;
+        font-weight:bold;
+        cursor:pointer;
+        transition:.3s;
+    }
+
+    .btn:hover {
+        background:#b00000;
+    }
+
+    /* ===== IMAGEM DO PRODUTO ===== */
+    .img-container {
+        width:100%;
+        height:200px;
+        overflow:hidden;
+        border-radius:12px;
+        position:relative;
+    }
+
+    .img-container img {
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        position:absolute;
+        top:0;
+        left:0;
+        opacity:0;
+        transition:opacity 1s;
+    }
+
+    .img-container img.active {
+        opacity:1;
+    }
+
+    /* ===== RODAPÉ ===== */
+    footer {
+        background:#111;
+        text-align:center;
+        padding:20px 0;
+        border-top:2px solid #e60000;
+        margin-top:60px;
+    }
+
+    footer p {color:#aaa;}
+
 </style>
 </head>
 
 <body>
 
+<!-- MENU -->
 <header>
-<nav>
-    <h1>PROZMALHADOS</h1>
+    <nav>
+        <h1>PROZMALHADOS</h1>
 
-    <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="planos.html">Planos</a></li>
-        <li><a href="produtooo.html" class="active">Produtos</a></li>
-        <li><a href="contato.html">Contato</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-        <li id="cart-btn">🛒 <span id="cart-count">0</span></li>
-    </ul>
-</nav>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="planos.html">Planos</a></li>
+            <li><a href="produtooo.html" class="active">Produtos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+
+            <li>
+                <span id="cart-btn">
+                    🛒 <span id="cart-count">0</span>
+                </span>
+            </li>
+        </ul>
+    </nav>
 </header>
 
-<section class="title-section">
-    <h2>Nossos Produtos</h2>
-    <p>Confira os melhores produtos de academia disponíveis para você!</p>
-
-    <!-- TÍTULO -->
+<!-- TÍTULO -->
 <section class="title-section">
     <h2>Nossos Produtos</h2>
     <p>Confira os melhores produtos de academia disponíveis para você!</p>
@@ -269,10 +357,3 @@ document.querySelectorAll(".add-cart").forEach(button => {
 
 </body>
 </html>
-</body>
-</html>
-
-
-
-
-
