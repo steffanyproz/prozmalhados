@@ -11,11 +11,7 @@
 <style>
     /* ===== RESET ===== */
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-    body {
-        background:#000;
-        color:#fff;
-        padding-top: 120px; /* Espaço para o header responsivo */
-    }
+    body {background:#000;color:#fff;}
 
     /* ===== MENU ===== */
     header {
@@ -29,23 +25,25 @@
     }
 
     nav {
+        max-width: 1200px;
+        margin: auto;
         display: flex;
-        flex-direction: column;   /* celular */
+        justify-content: space-between;
         align-items: center;
-        gap: 15px;
+        padding: 0 20px;
     }
 
     nav h1 {
         color: #e60000;
+        letter-spacing: 2px;
         font-size: 28px;
         font-weight: bold;
     }
 
     nav ul {
         display: flex;
-        flex-direction: column;   /* UM EMBAIXO DO OUTRO no celular */
+        gap: 25px;
         align-items: center;
-        gap: 10px;
         list-style: none;
     }
 
@@ -61,6 +59,14 @@
         color: #e60000;
     }
 
+    /* Botão central */
+    .contact-btn-container {
+        display: flex;
+        justify-content: center;
+        margin: 40px 0;
+    }
+
+    /* Ícone do carrinho */
     #cart-btn {
         font-size: 22px;
         cursor: pointer;
@@ -72,32 +78,13 @@
         color: #e60000;
     }
 
+    /* Número do carrinho */
     #cart-count {
         background:#e60000;
         padding:2px 7px;
         border-radius:50%;
         font-size:14px;
         margin-left:4px;
-    }
-
-    /* ===== MEDIA QUERY DESKTOP ===== */
-    @media (min-width: 768px) {
-        nav {
-            flex-direction: row;  /* desktop */
-            justify-content: space-between;
-        }
-
-        nav ul {
-            flex-direction: row;  /* desktop */
-            gap: 25px;
-        }
-    }
-
-    /* Botão central */
-    .contact-btn-container {
-        display: flex;
-        justify-content: center;
-        margin: 40px 0;
     }
 
     /* ===== TÍTULO ===== */
@@ -143,9 +130,10 @@
         box-shadow:0 0 20px #e60000;
     }
 
-    .produto-card h3, .produto-card h4 {
+    .produto-card h3 {
         color:#e60000;
         margin:15px 0;
+        font-size:20px;
     }
 
     .btn {
@@ -198,6 +186,42 @@
     }
 
     footer p {color:#aaa;}
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 767px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        nav ul {
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* Header ocupa fluxo normal para não sobrepor os produtos */
+        header {
+            position: relative;
+        }
+    }
+
+    @media (min-width: 768px) {
+        nav {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        nav ul {
+            flex-direction: row;
+            gap: 25px;
+        }
+
+        header {
+            position: sticky;
+        }
+    }
+
 </style>
 </head>
 
@@ -231,6 +255,7 @@
 
 <!-- PRODUTOS -->
 <div class="produtos-container">
+
     <!-- Produto 1 -->
     <div class="produto-card">
         <div class="img-container">
@@ -318,6 +343,7 @@
         <h4>R$100</h4>
         <button class="btn add-cart">Adicionar ao Carrinho</button>
     </div>
+
 </div>
 
 <!-- BOTÃO ANTES DO RODAPÉ -->
@@ -359,6 +385,3 @@ document.querySelectorAll(".add-cart").forEach(button => {
 
 </body>
 </html>
-
-
-
