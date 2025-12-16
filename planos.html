@@ -181,21 +181,27 @@
 </footer>
 
 <script>
-    function updateCartCountFromStorage() {
-        try {
-            const raw = localStorage.getItem('carrinho');
-            if (!raw) { document.getElementById('cart-count').textContent = '0'; return; }
-            const arr = JSON.parse(raw);
-            if (Array.isArray(arr)) document.getElementById('cart-count').textContent = arr.length;
-            else document.getElementById('cart-count').textContent = '0';
-        } catch(e) { document.getElementById('cart-count').textContent = '0'; }
+function updateCartCount() {
+    const cartCountEl = document.getElementById('cart-count');
+    let carrinho = [];
+    try {
+        const data = localStorage.getItem('carrinho');
+        if (data) carrinho = JSON.parse(data);
+    } catch (e) {
+        console.error("Erro ao ler carrinho:", e);
     }
+    cartCountEl.textContent = carrinho.length || 0;
+}
 
-    updateCartCountFromStorage();
-    window.addEventListener('storage', (e) => { if(e.key==='carrinho') updateCartCountFromStorage(); });
-    document.getElementById('cart-btn').addEventListener('click', updateCartCountFromStorage);
+// Atualiza ao carregar
+updateCartCount();
+
+// Atualiza quando houver mudança no localStorage
+window.addEventListener('storage', updateCartCount);
+
+// Atualiza ao clicar no ícone do carrinho
+document.getElementById('cart-btn').addEventListener('click', updateCartCount);
 </script>
 
 </body>
 </html>
-
