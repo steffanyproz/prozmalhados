@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Início | PROZMALHADOS</title>
 
-    <!-- Google Fonts -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== RESET ===== */
+
         * {
             margin: 0;
             padding: 0;
@@ -22,7 +22,7 @@
             color: #fff;
         }
 
-        /* ===== MENU ===== */
+        
         header {
             width: 100%;
             background: #111;
@@ -71,7 +71,7 @@
             color: #e60000;
         }
 
-        /* ÍCONE DO CARRINHO */
+        
         #cart-btn {
             font-size: 22px;
             cursor: pointer;
@@ -83,7 +83,7 @@
             color: #e60000;
         }
 
-        /* ===== CARRINHO LATERAL ===== */
+        
         .cart {
             width: 350px;
             height: 100vh;
@@ -133,7 +133,7 @@
             font-weight: 700;
         }
 
-        /* ===== HERO ===== */
+        
         .hero {
             width: 100%;
             height: 85vh;
@@ -172,7 +172,7 @@
             background: #d62b22;
         }
 
-        /* ===== SOBRE ===== */
+        
         .sobre {
             text-align: center;
             padding: 80px 20px;
@@ -183,7 +183,7 @@
             font-size: 36px;
         }
 
-        /* ===== DIFERENCIAIS ===== */
+        
         .diferenciais {
             padding: 60px 20px;
             text-align: center;
@@ -209,7 +209,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== RODAPÉ ===== */
+        
         footer {
             background: #111;
             text-align: center;
@@ -218,7 +218,7 @@
             margin-top: 60px;
         }
 
-        /* ===== RESPONSIVIDADE ===== */
+        
         @media (max-width: 768px) {
             nav ul {
                 gap: 12px;
@@ -241,7 +241,7 @@
 </head>
 <body>
 
-    <!-- ===== MENU ===== -->
+    
     <header>
         <nav>
             <h1>PROZMALHADOS</h1>
@@ -259,7 +259,7 @@
         </nav>
     </header>
 
-    <!-- ===== CARRINHO LATERAL ===== -->
+    
     <div class="cart" id="cart">
         <h2>Seu Carrinho</h2>
         <div class="cart-items" id="cart-items"></div>
@@ -269,7 +269,7 @@
         <button class="close-cart" id="close-cart">Fechar</button>
     </div>
 
-    <!-- ===== BANNER ===== -->
+    
     <section class="hero">
         <div class="hero-content">
             <h2>O corpo muda quando a mente decide não desistir.</h2>
@@ -277,7 +277,7 @@
         </div>
     </section>
 
-    <!-- ===== SOBRE ===== -->
+    
     <section class="sobre">
         <h2>Sobre a PROZMALHADOS</h2>
         <p>
@@ -286,7 +286,7 @@
         </p>
     </section>
 
-    <!-- ===== DIFERENCIAIS ===== -->
+    
     <section class="diferenciais">
         <h2>Nossos Diferenciais</h2>
 
@@ -308,7 +308,7 @@
         </div>
     </section>
 
-    <!-- ===== RODAPÉ ===== -->
+    
     <footer>
         <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
     </footer>
@@ -318,3 +318,4 @@
 
 </body>
 </html>
+
