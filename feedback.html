@@ -12,7 +12,7 @@
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
     body {background:#000;color:#fff;}
 
-    /* ===== MENU (IGUAL AO PRODUTOS) ===== */
+    /* ===== MENU ===== */
     header {
         width: 100%;
         background: #111;
@@ -55,27 +55,26 @@
     }
 
     nav ul li a:hover,
-    nav ul li a.active {
-        color: #e60000;
-    }
+    nav ul li a.active { color:#e60000; }
 
     /* Ícone do carrinho */
     #cart-btn {
         font-size: 22px;
         cursor: pointer;
         color: #fff;
-        transition: 0.3s;
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
     }
 
-    #cart-btn:hover { color:#e60000; }
-
-    /* Número do carrinho */
     #cart-count {
         background:#e60000;
+        color:#fff;
         padding:2px 7px;
         border-radius:50%;
-        font-size:14px;
-        margin-left:4px;
+        font-size:13px;
+        min-width:24px;
+        text-align:center;
     }
 
     /* ===== TÍTULO ===== */
@@ -165,12 +164,25 @@
     }
     footer p {color:#aaa;}
 
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 768px) {
+        nav {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        nav ul {
+            flex-direction: column;
+            gap: 12px;
+        }
+        header {position: relative;}
+    }
 </style>
 </head>
 
 <body>
 
-<!-- MENU IGUAL AO PRODUTOS -->
+<!-- MENU -->
 <header>
     <nav>
         <h1>PROZMALHADOS</h1>
@@ -211,17 +223,14 @@
 
 <!-- LISTA DE FEEDBACKS -->
 <div class="feedback-list">
-
     <div class="feedback-item">
         <h3>Maria</h3>
         <p>A melhor academia, professores muito atenciosos!</p>
     </div>
-
     <div class="feedback-item">
         <h3>Carlos</h3>
         <p>Equipamentos novos e ambiente muito organizado.</p>
     </div>
-
 </div>
 
 <!-- RODAPÉ -->
@@ -230,15 +239,33 @@
 </footer>
 
 <script>
-/* === CARRINHO (MESMA FUNÇÃO DO PRODUTOS) === */
-let cartCount = 0;
-const cartCountElement = document.getElementById("cart-count");
+/* ===== CARRINHO ===== */
+function updateCartCountFromStorage() {
+    try {
+        const raw = localStorage.getItem('carrinho');
+        if (!raw) {
+            document.getElementById('cart-count').textContent = '0';
+            return;
+        }
+        const arr = JSON.parse(raw);
+        if (Array.isArray(arr)) {
+            document.getElementById('cart-count').textContent = arr.length;
+        } else {
+            document.getElementById('cart-count').textContent = '0';
+        }
+    } catch(e) {
+        document.getElementById('cart-count').textContent = '0';
+    }
+}
 
-document.querySelectorAll(".add-cart").forEach(button => {
-    button.addEventListener("click", () => {
-        cartCount++;
-        cartCountElement.textContent = cartCount;
-    });
+updateCartCountFromStorage();
+
+window.addEventListener('storage', (e) => {
+    if (e.key === 'carrinho') updateCartCountFromStorage();
+});
+
+document.getElementById('cart-btn').addEventListener('click', () => {
+    updateCartCountFromStorage();
 });
 </script>
 
@@ -247,5 +274,7 @@ document.querySelectorAll(".add-cart").forEach(button => {
 
 
 
+
     
     
+
