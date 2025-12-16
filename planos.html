@@ -1,343 +1,229 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planos | PROZMALHADOS</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planos | PROZMALHADOS</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-    <style>
-        /* ===== RESET ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
+<style>
+    /* ===== RESET ===== */
+    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
+    body {background:#000;color:#fff;}
 
-        body {
-            background: #000;
-            color: white;
-        }
+    /* ===== HEADER & NAV ===== */
+    header {
+        width: 100%;
+        background: #111;
+        padding: 20px 0;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        border-bottom: 2px solid #e60000;
+    }
 
-        /* ===== MENU ===== (MESMO DA INDEX) */
-        header {
-            width: 100%;
-            background: #111;
-            padding: 20px 0;
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            border-bottom: 2px solid #e60000;
-        }
+    nav {
+        max-width: 1200px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+        flex-wrap: wrap;
+    }
 
-        nav {
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
+    nav h1 { color:#e60000; font-size:28px; letter-spacing:2px; font-weight:bold; }
 
-        nav h1 {
-            color: #e60000;
-            letter-spacing: 2px;
-            font-size: 28px;
-            font-weight: bold;
-        }
+    nav ul { display:flex; gap:25px; align-items:center; flex-wrap: wrap; }
 
-        nav ul {
-            display: flex;
-            gap: 25px;
-            align-items: center;
-        }
+    nav ul li { list-style:none; }
 
-        nav ul li {
-            list-style: none;
-        }
+    nav ul li a { color:white; font-size:16px; text-decoration:none; transition:.3s; }
 
-        nav ul li a {
-            color: white;
-            font-size: 16px;
-            text-decoration: none;
-            transition: .3s;
-        }
+    nav ul li a:hover, nav ul li a.active { color:#e60000; }
 
-        nav ul li a:hover,
-        nav ul li a.active {
-            color: #e60000;
-        }
+    #cart-btn { font-size:22px; cursor:pointer; color:#fff; display:inline-flex; align-items:center; }
 
-        /* ÍCONE DO CARRINHO */
-        #cart-btn {
-            font-size: 22px;
-            cursor: pointer;
-            color: #fff;
-            transition: 0.3s;
-        }
+    #cart-btn:hover { color:#e60000; }
 
-        #cart-btn:hover {
-            color: #e60000;
-        }
+    /* ===== CARRINHO ===== */
+    .cart {
+        width: 350px;
+        height: 100vh;
+        background: #111;
+        position: fixed;
+        top: 0;
+        right: -350px;
+        padding: 20px;
+        transition: 0.4s ease;
+        border-left: 3px solid #e60000;
+        z-index: 1000;
+    }
 
-        /* ===== CARRINHO LATERAL ===== (MESMO DA INDEX) */
-        .cart {
-            width: 350px;
-            height: 100vh;
-            background: #111;
-            position: fixed;
-            top: 0;
-            right: -350px;
-            padding: 20px;
-            transition: 0.4s ease;
-            border-left: 3px solid #e60000;
-            z-index: 1000;
-        }
+    .cart.open { right:0; }
 
-        .cart.open {
-            right: 0;
-        }
+    .cart h2 { margin-bottom:15px; color:#e60000; }
+    .cart-items { max-height:70vh; overflow-y:auto; }
+    .cart-item { padding:10px; border-bottom:1px solid #444; }
+    .cart-total { margin-top:20px; font-size:18px; font-weight:bold; color:#fff; }
+    .close-cart { background:#e60000; padding:8px 15px; border:none; cursor:pointer; margin-top:20px; width:100%; font-weight:700; }
 
-        .cart h2 {
-            margin-bottom: 15px;
-            color: #e60000;
-        }
+    /* ===== TÍTULO ===== */
+    .title-section { text-align:center; margin-top:40px; padding:20px; }
+    .title-section h2 { font-size:36px; margin-bottom:10px; color:#e60000; }
+    .title-section p { color:#ccc; font-size:18px; }
 
-        .cart-items {
-            max-height: 70vh;
-            overflow-y: auto;
-        }
+    /* ===== PLANOS ===== */
+    .planos-container {
+        max-width: 1200px;
+        margin: 50px auto;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        padding: 0 20px;
+    }
 
-        .cart-item {
-            padding: 10px;
-            border-bottom: 1px solid #444;
-        }
+    .card {
+        background: #111;
+        width: 300px;
+        padding: 25px;
+        border: 2px solid #e60000;
+        border-radius: 12px;
+        text-align: center;
+        transition: .4s;
+    }
 
-        .cart-total {
-            margin-top: 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #fff;
-        }
+    .card:hover { transform: scale(1.05); box-shadow: 0 0 20px #e60000; }
 
-        .close-cart {
-            background: #e60000;
-            padding: 8px 15px;
-            border: none;
-            cursor: pointer;
-            margin-top: 20px;
-            width: 100%;
-            font-weight: 700;
-        }
+    .card h3 { color: #e60000; font-size:26px; margin-bottom:15px; }
 
-        /* ===== TÍTULO ===== */
-        .title-section {
-            text-align: center;
-            margin-top: 40px;
-            padding: 20px;
-        }
+    .price { font-size:40px; font-weight:bold; margin:20px 0; }
+    .price span { font-size:20px; color:#e60000; }
 
-        .title-section h2 {
-            font-size: 36px;
-            margin-bottom: 10px;
-            color: #e60000;
-        }
+    .card ul { text-align:left; margin-top:20px; font-size:15px; color:#ccc; }
+    .card ul li { margin-bottom:10px; list-style:none; }
 
-        .title-section p {
-            color: #ccc;
-            font-size: 18px;
-        }
+    .btn {
+        margin-top:25px;
+        display:inline-block;
+        padding:12px 25px;
+        border-radius:8px;
+        background:#e60000;
+        color:#fff;
+        text-decoration:none;
+        font-weight:bold;
+        transition:.3s;
+    }
+    .btn:hover { background:#b00000; }
 
-        /* ===== PLANOS ===== */
-        .planos-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            padding: 0 20px;
-        }
+    .contact-btn-container { display:flex; justify-content:center; margin:40px 0; }
 
-        .card {
-            background: #111;
-            width: 300px;
-            padding: 25px;
-            border: 2px solid #e60000;
-            border-radius: 12px;
-            text-align: center;
-            transition: .4s;
-        }
+    /* ===== RODAPÉ ===== */
+    footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; color:#aaa; }
 
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px #e60000;
-        }
-
-        .card h3 {
-            color: #e60000;
-            font-size: 26px;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 40px;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-
-        .price span {
-            font-size: 20px;
-            color: #e60000;
-        }
-
-        .card ul {
-            text-align: left;
-            margin-top: 20px;
-            font-size: 15px;
-            color: #ccc;
-        }
-
-        .card ul li {
-            margin-bottom: 10px;
-            list-style: none;
-        }
-
-        .btn {
-            margin-top: 25px;
-            display: inline-block;
-            padding: 12px 25px;
-            border-radius: 8px;
-            background: #e60000;
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: .3s;
-        }
-
-        .btn:hover {
-            background: #b00000;
-        }
-
-        .contact-btn-container {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-        }
-
-        /* ===== RODAPÉ ===== */
-        footer {
-            background: #111;
-            text-align: center;
-            padding: 20px 0;
-            border-top: 2px solid #e60000;
-            margin-top: 60px;
-        }
-
-        footer p {
-            color: #aaa;
-            font-size: 14px;
-        }
-    </style>
+    /* ===== RESPONSIVO ===== */
+    @media(max-width:768px){
+        nav { flex-direction: column; align-items: center; }
+        nav ul { flex-direction: column; gap:12px; }
+        .planos-container { flex-direction: column; align-items:center; }
+        .card { width:90%; }
+    }
+</style>
 </head>
 
 <body>
 
-    <!-- ===== MENU ===== -->
-    <header>
-        <nav>
-            <h1>PROZMALHADOS</h1>
+<!-- ===== MENU ===== -->
+<header>
+    <nav>
+        <h1>PROZMALHADOS</h1>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="planos.html" class="active">Planos</a></li>
+            <li><a href="produtooo.html">Produtos</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="feedback.html">Feedback</a></li>
+            <li><span id="cart-btn">🛒</span></li>
+        </ul>
+    </nav>
+</header>
 
-            <ul>
-                <li><a href="index.html">Início</a></li>
-                <li><a href="planos.html" class="active">Planos</a></li>
-                <li><a href="produtooo.html">Produtos</a></li>
-                <li><a href="contato.html">Contato</a></li>
-                <li><a href="feedback.html">Feedback</a></li>
+<!-- ===== CARRINHO LATERAL ===== -->
+<div class="cart" id="cart">
+    <h2>Seu Carrinho</h2>
+    <div class="cart-items" id="cart-items"></div>
+    <p class="cart-total" id="cart-total">Total: R$ 0,00</p>
+    <button class="close-cart" id="close-cart">Fechar</button>
+</div>
 
-                <!-- ÍCONE DO CARRINHO -->
-                <li><span id="cart-btn">🛒</span></li>
-            </ul>
-        </nav>
-    </header>
+<!-- ===== TÍTULO ===== -->
+<section class="title-section">
+    <h2>Nossos Planos</h2>
+    <p>Escolha o plano perfeito para você conquistar seus resultados!</p>
+</section>
 
-    <!-- ===== CARRINHO LATERAL ===== -->
-    <div class="cart" id="cart">
-        <h2>Seu Carrinho</h2>
-        <div class="cart-items" id="cart-items"></div>
-
-        <p class="cart-total" id="cart-total">Total: R$ 0,00</p>
-
-        <button class="close-cart" id="close-cart">Fechar</button>
+<!-- ===== CARDS ===== -->
+<div class="planos-container">
+    <div class="card">
+        <h3>Básico</h3>
+        <p class="price">R$49<span>/mês</span></p>
+        <ul>
+            <li>✔ Acesso à musculação</li>
+            <li>✔ Horário comercial</li>
+            <li>✔ Ficha simples</li>
+            <li>✖ Sem personal</li>
+        </ul>
+        <a href="#" class="btn">Assinar Agora</a>
     </div>
 
-    <!-- ===== TÍTULO ===== -->
-    <section class="title-section">
-        <h2>Nossos Planos</h2>
-        <p>Escolha o plano perfeito para você conquistar seus resultados!</p>
-    </section>
-
-    <!-- ===== CARDS ===== -->
-    <div class="planos-container">
-
-        <div class="card">
-            <h3>Básico</h3>
-            <p class="price">R$49<span>/mês</span></p>
-
-            <ul>
-                <li>✔ Acesso à musculação</li>
-                <li>✔ Horário comercial</li>
-                <li>✔ Ficha simples</li>
-                <li>✖ Sem personal</li>
-            </ul>
-
-            <a href="#" class="btn">Assinar Agora</a>
-        </div>
-
-        <div class="card">
-            <h3>Intermediário</h3>
-            <p class="price">R$79<span>/mês</span></p>
-
-            <ul>
-                <li>✔ Acesso total</li>
-                <li>✔ Aulas coletivas</li>
-                <li>✔ Ficha personalizada</li>
-                <li>✖ 1 avaliação física/mês</li>
-            </ul>
-
-            <a href="#" class="btn">Assinar Agora</a>
-        </div>
-
-        <div class="card">
-            <h3>Premium</h3>
-            <p class="price">R$119<span>/mês</span></p>
-
-            <ul>
-                <li>✔ Acesso 24h</li>
-                <li>✔ Personal incluso</li>
-                <li>✔ Avaliação ilimitada</li>
-                <li>✔ Área VIP</li>
-            </ul>
-
-            <a href="#" class="btn">Assinar Agora</a>
-        </div>
-
+    <div class="card">
+        <h3>Intermediário</h3>
+        <p class="price">R$79<span>/mês</span></p>
+        <ul>
+            <li>✔ Acesso total</li>
+            <li>✔ Aulas coletivas</li>
+            <li>✔ Ficha personalizada</li>
+            <li>✖ 1 avaliação física/mês</li>
+        </ul>
+        <a href="#" class="btn">Assinar Agora</a>
     </div>
 
-    <div class="contact-btn-container">
-        <a href="produtooo.html" class="btn">Produtos</a>
+    <div class="card">
+        <h3>Premium</h3>
+        <p class="price">R$119<span>/mês</span></p>
+        <ul>
+            <li>✔ Acesso 24h</li>
+            <li>✔ Personal incluso</li>
+            <li>✔ Avaliação ilimitada</li>
+            <li>✔ Área VIP</li>
+        </ul>
+        <a href="#" class="btn">Assinar Agora</a>
     </div>
+</div>
 
-    <!-- ===== RODAPÉ ===== -->
-    <footer>
-        <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
-    </footer>
+<div class="contact-btn-container">
+    <a href="produtooo.html" class="btn">Produtos</a>
+</div>
 
-    <!-- SCRIPT DO CARRINHO -->
-    <script src="carrinho.js"></script>
+<!-- ===== RODAPÉ ===== -->
+<footer>
+    <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
+</footer>
+
+<!-- ===== SCRIPT DO CARRINHO ===== -->
+<script src="carrinho.js"></script>
+<script>
+    // Abrir/Fechar carrinho
+    const cartBtn = document.getElementById('cart-btn');
+    const cart = document.getElementById('cart');
+    const closeCart = document.getElementById('close-cart');
+
+    cartBtn.addEventListener('click', () => { cart.classList.add('open'); });
+    closeCart.addEventListener('click', () => { cart.classList.remove('open'); });
+</script>
 
 </body>
 </html>
