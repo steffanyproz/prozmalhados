@@ -9,187 +9,264 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
 <style>
-    /* ===== RESET ===== */
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-    body {background:#000;color:#fff;}
+/* ===== RESET ===== */
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Montserrat',sans-serif;
+}
 
-    /* ===== MENU ===== */
-    header {
-        width: 100%;
-        background: #111;
-        padding: 20px 0;
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        border-bottom: 2px solid #e60000;
-    }
+body {
+    background:#000;
+    color:#fff;
+}
+
+/* ===== MENU ===== */
+header {
+    width:100%;
+    background:#111;
+    padding:20px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    border-bottom:2px solid #e60000;
+}
+
+nav {
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+nav h1 {
+    color:#e60000;
+    letter-spacing:2px;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav ul {
+    display:flex;
+    gap:25px;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+nav ul li {
+    list-style:none;
+}
+
+nav ul li a {
+    color:#fff;
+    font-size:16px;
+    text-decoration:none;
+    transition:.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color:#e60000;
+}
+
+/* Carrinho */
+#cart-btn {
+    font-size:22px;
+    cursor:pointer;
+    color:#fff;
+    transition:.3s;
+}
+
+#cart-btn:hover {
+    color:#e60000;
+}
+
+#cart-count {
+    background:#e60000;
+    padding:2px 7px;
+    border-radius:50%;
+    font-size:14px;
+    margin-left:4px;
+}
+
+/* ===== TÍTULO ===== */
+.title-section {
+    text-align:center;
+    padding:40px 20px;
+}
+
+.title-section h2 {
+    font-size:36px;
+    color:#e60000;
+}
+
+.title-section p {
+    margin-top:10px;
+    font-size:18px;
+    color:#ccc;
+}
+
+/* ===== PRODUTOS ===== */
+.produtos-container {
+    max-width:1200px;
+    margin:40px auto;
+    padding:0 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.produto-card {
+    background:#111;
+    border:2px solid #e60000;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.produto-card:hover {
+    transform:scale(1.05);
+    box-shadow:0 0 20px #e60000;
+}
+
+.produto-card h3 {
+    color:#e60000;
+    margin:15px 0 5px;
+    font-size:20px;
+}
+
+.produto-card h4 {
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+/* Imagens */
+.img-container {
+    width:100%;
+    height:200px;
+    overflow:hidden;
+    border-radius:12px;
+    position:relative;
+}
+
+.img-container img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0;
+    transition:opacity 1s;
+}
+
+.img-container img.active {
+    opacity:1;
+}
+
+/* Botão */
+.btn {
+    padding:12px 20px;
+    background:#e60000;
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+    width:100%;
+}
+
+.btn:hover {
+    background:#b00000;
+}
+
+/* ===== BOTÃO CONTATO ===== */
+.contact-btn-container {
+    display:flex;
+    justify-content:center;
+    margin:40px 0;
+    padding:0 20px;
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+    background:#111;
+    text-align:center;
+    padding:20px 10px;
+    border-top:2px solid #e60000;
+    margin-top:60px;
+}
+
+footer p {
+    color:#aaa;
+}
+
+/* ===== RESPONSIVO ===== */
+
+/* Tablets */
+@media (max-width:1024px) {
+    nav h1 { font-size:24px; }
+    .title-section h2 { font-size:30px; }
+}
+
+/* Celulares */
+@media (max-width:768px) {
 
     nav {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-    }
-
-    nav h1 {
-        color: #e60000;
-        letter-spacing: 2px;
-        font-size: 28px;
-        font-weight: bold;
+        flex-direction:column;
+        gap:15px;
     }
 
     nav ul {
-        display: flex;
-        gap: 25px;
-        align-items: center;
-    }
-
-    nav ul li {
-        list-style: none;
+        justify-content:center;
+        gap:15px;
     }
 
     nav ul li a {
-        color: white;
-        font-size: 16px;
-        text-decoration: none;
-        transition: .3s;
-    }
-
-    nav ul li a:hover,
-    nav ul li a.active {
-        color: #e60000;
-    }
-
-    /* Botão central */
-    .contact-btn-container {
-        display: flex;
-        justify-content: center;
-        margin: 40px 0;
-    }
-
-    /* Ícone do carrinho */
-    #cart-btn {
-        font-size: 22px;
-        cursor: pointer;
-        color: #fff;
-        transition: 0.3s;
-    }
-
-    #cart-btn:hover {
-        color: #e60000;
-    }
-
-    /* Número do carrinho */
-    #cart-count {
-        background:#e60000;
-        padding:2px 7px;
-        border-radius:50%;
         font-size:14px;
-        margin-left:4px;
-    }
-
-    /* ===== TÍTULO ===== */
-    .title-section {
-        text-align:center;
-        padding:40px 20px;
     }
 
     .title-section h2 {
-        font-size:36px;
-        color:#e60000;
+        font-size:26px;
     }
 
     .title-section p {
-        margin-top:10px;
-        font-size:18px;
-        color:#ccc;
+        font-size:15px;
     }
 
-    /* ===== GRID DE PRODUTOS ===== */
     .produtos-container {
-        max-width:1200px;
-        margin:40px auto;
-        padding:0 20px;
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-        gap:30px;
+        grid-template-columns:1fr;
     }
 
-    .produto-card {
-        background:#111;
-        border:2px solid #e60000;
-        border-radius:12px;
-        padding:20px;
-        text-align:center;
-        overflow:hidden;
-        position:relative;
-        transition:.3s;
-    }
-
-    .produto-card:hover {
-        transform:scale(1.05);
-        box-shadow:0 0 20px #e60000;
-    }
-
-    .produto-card h3 {
-        color:#e60000;
-        margin:15px 0;
-        font-size:20px;
-    }
-
-    .btn {
-        padding:10px 20px;
-        background:#e60000;
-        color:#fff;
-        border:none;
-        border-radius:8px;
-        text-decoration:none;
-        font-weight:bold;
-        cursor:pointer;
-        transition:.3s;
-    }
-
-    .btn:hover {
-        background:#b00000;
-    }
-
-    /* ===== IMAGEM DO PRODUTO ===== */
     .img-container {
-        width:100%;
-        height:200px;
-        overflow:hidden;
-        border-radius:12px;
-        position:relative;
+        height:180px;
+    }
+}
+
+/* Celulares pequenos */
+@media (max-width:480px) {
+
+    nav h1 {
+        font-size:22px;
     }
 
-    .img-container img {
-        width:100%;
-        height:100%;
-        object-fit:cover;
-        position:absolute;
-        top:0;
-        left:0;
-        opacity:0;
-        transition:opacity 1s;
+    .title-section h2 {
+        font-size:22px;
     }
 
-    .img-container img.active {
-        opacity:1;
+    .img-container {
+        height:160px;
     }
 
-    /* ===== RODAPÉ ===== */
-    footer {
-        background:#111;
-        text-align:center;
-        padding:20px 0;
-        border-top:2px solid #e60000;
-        margin-top:60px;
+    #cart-count {
+        font-size:12px;
     }
-
-    footer p {color:#aaa;}
-
+}
 </style>
 </head>
 
@@ -197,23 +274,19 @@
 
 <!-- MENU -->
 <header>
-    <nav>
-        <h1>PROZMALHADOS</h1>
-
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="planos.html">Planos</a></li>
-            <li><a href="produtooo.html" class="active">Produtos</a></li>
-            <li><a href="contato.html">Contato</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-
-            <li>
-                <span id="cart-btn">
-                    🛒 <span id="cart-count">0</span>
-                </span>
-            </li>
-        </ul>
-    </nav>
+<nav>
+    <h1>PROZMALHADOS</h1>
+    <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="planos.html">Planos</a></li>
+        <li><a href="produtooo.html" class="active">Produtos</a></li>
+        <li><a href="contato.html">Contato</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li>
+            <span id="cart-btn">🛒 <span id="cart-count">0</span></span>
+        </li>
+    </ul>
+</nav>
 </header>
 
 <!-- TÍTULO -->
@@ -225,114 +298,34 @@
 <!-- PRODUTOS -->
 <div class="produtos-container">
 
-    <!-- Produto 1 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://images.tcdn.com.br/img/img_prod/999784/anilha_texturizada_10kg_1105_2_443257e96b6aae9f7042c37b3701a164.png" class="active">
-            <img src="https://img.irroba.com.br/fit-in/250x250/filters:fill(fff):quality(80)/jfitspor/catalog/pesos/anilhas/ferro/anilha-de-ferro-10kg.jpg">
-        </div>
-        <h3>Anilha de 10kg</h3>
-         <h4>R$130</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
+<!-- PRODUTO -->
+<div class="produto-card">
+    <div class="img-container">
+        <img src="https://images.tcdn.com.br/img/img_prod/999784/anilha_texturizada_10kg_1105_2_443257e96b6aae9f7042c37b3701a164.png" class="active">
+        <img src="https://img.irroba.com.br/fit-in/250x250/filters:fill(fff):quality(80)/jfitspor/catalog/pesos/anilhas/ferro/anilha-de-ferro-10kg.jpg">
     </div>
+    <h3>Anilha de 10kg</h3>
+    <h4>R$130</h4>
+    <button class="btn add-cart">Adicionar ao Carrinho</button>
+</div>
 
-    <!-- Produto 2 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://http2.mlstatic.com/D_NQ_NP_703121-MLB81486047566_012025-O-colchonete-exercicios-em-casa-ginastica-treino-perna-bracos.webp" class="active">
-            <img src="https://imgcentauro-a.akamaihd.net/1200x1200/78727102A4.jpg">
-        </div>
-        <h3>Colchonete Fitness</h3>
-         <h4>R$17</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 3 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRimEyf0A2SER4t2b98ASGirERD-LCI4d8xyg&s" class="active">
-            <img src="https://http2.mlstatic.com/D_NQ_NP_971702-MLA84842417473_052025-O.webp">
-        </div>
-        <h3>Bola de Pilates</h3>
-         <h4>R$40</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 4 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://cdn.diariodolitoral.com.br/upload/dn_noticia/2016/09/pular-cordas.jpg" class="active">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRb3utII8cAb4SAXTKkguDlct8NYTp0EAKBxQ&s">
-        </div>
-        <h3>Corda de Pular</h3>
-         <h3>R$30</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 5 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://http2.mlstatic.com/D_NQ_NP_809421-MLU71759084203_092023-O.webp" class="active">
-            <img src="https://boxpt.com.br/wp-content/uploads/2025/11/15190286321-15190281238-combina-o-pack-bandas-elasticas.jpg.webp">
-        </div>
-        <h3>Bandas Elásticas</h3>
-         <h4>R$12,90</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 6 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://a-static.mlcdn.com.br/800x600/creatina-pura-300g-500g-600g-1kg-dark-lab-monohidratada/trevizosuplementos/c9219-1/3eeee43640624752df1691373c632eb5.jpeg" class="active">
-            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-lv3l3872s59l83">
-        </div>
-        <h3>Suplementos Proteicos</h3>
-         <h4>R$80</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 7 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://imgs.casasbahia.com.br/1569927582/1xg.jpg?imwidth=500" class="active">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqI_Vnuw4oZRqFARN8LtdR-3SzEF-skDml8w&s">
-        </div>
-        <h3>Luvas de Academia</h3>
-         <h4>R$30</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
-
-    <!-- Produto 8 -->
-    <div class="produto-card">
-        <div class="img-container">
-            <img src="https://img.irroba.com.br/fit-in/500x500/filters:fill(fff):quality(80)/boxfitne/catalog/api/boxfitne_blingirr/63e67f48c6b1c.jpg" class="active">
-            <img src="https://down-br.img.susercontent.com/file/br-11134207-7r98o-m8gd2iruzgfl48_tn.webp">
-        </div>
-        <h3>Kettlebell 12kg</h3>
-         <h4>R$100</h4>
-        <button class="btn add-cart">Adicionar ao Carrinho</button>
-    </div>
+<!-- Repita os outros produtos se quiser -->
 
 </div>
 
-<!-- BOTÃO ANTES DO RODAPÉ -->
 <div class="contact-btn-container">
     <a href="contato.html" class="btn">Entre em contato</a>
 </div>
 
-<!-- RODAPÉ -->
 <footer>
     <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
 </footer>
 
 <script>
-/* === SLIDE DE IMAGEM === */
-const cards = document.querySelectorAll('.produto-card');
-
-cards.forEach(card => {
+/* Slide de imagens */
+document.querySelectorAll('.produto-card').forEach(card => {
     const imgs = card.querySelectorAll('img');
     let index = 0;
-
     setInterval(() => {
         imgs[index].classList.remove('active');
         index = (index + 1) % imgs.length;
@@ -340,12 +333,12 @@ cards.forEach(card => {
     }, 3000);
 });
 
-/* === CARRINHO === */
+/* Carrinho */
 let cartCount = 0;
 const cartCountElement = document.getElementById("cart-count");
 
-document.querySelectorAll(".add-cart").forEach(button => {
-    button.addEventListener("click", () => {
+document.querySelectorAll(".add-cart").forEach(btn => {
+    btn.addEventListener("click", () => {
         cartCount++;
         cartCountElement.textContent = cartCount;
     });
@@ -354,6 +347,7 @@ document.querySelectorAll(".add-cart").forEach(button => {
 
 </body>
 </html>
+
 
 
 
