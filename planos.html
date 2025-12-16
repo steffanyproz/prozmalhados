@@ -1,208 +1,184 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Feedback | PROZMALHADOS</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início | PROZMALHADOS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
-<style>
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
-    body {background:#000;color:#fff;}
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif;}
+        body {background: #000; color: #fff;}
 
-    header {
-        width: 100%;
-        background: #111;
-        padding: 20px 0;
-        position: sticky;
-        top: 0;
-        z-index: 999;
-        border-bottom: 2px solid #e60000;
-    }
+        header {
+            width: 100%;
+            background: #111;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            border-bottom: 2px solid #e60000;
+        }
 
-    nav {
-        max-width: 1200px;
-        margin: auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-    }
+        nav {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
 
-    nav h1 { 
-        color:#e60000; 
-        font-size:28px; 
-        letter-spacing:2px; 
-        font-weight:bold;
-    }
+        nav h1 {color: #e60000; letter-spacing: 2px; font-size: 28px; font-weight: bold;}
+        nav ul {display: flex; gap: 25px; align-items: center;}
+        nav ul li {list-style: none;}
+        nav ul li a {color: white; font-size: 16px; text-decoration: none; transition: .3s;}
+        nav ul li a:hover, nav ul li a.active {color: #e60000;}
+        #cart-btn {font-size: 22px; cursor: pointer; color: #fff; transition: 0.3s;}
+        #cart-btn:hover {color: #e60000;}
 
-    nav ul { 
-        display:flex; 
-        gap:25px; 
-        align-items:center; 
-        list-style:none; 
-    }
+        .cart {
+            width: 350px;
+            height: 100vh;
+            background: #111;
+            position: fixed;
+            top: 0;
+            right: -350px;
+            padding: 20px;
+            transition: 0.4s ease;
+            border-left: 3px solid #e60000;
+            z-index: 1000;
+        }
+        .cart.open {right: 0;}
+        .cart h2 {margin-bottom: 15px; color: #e60000;}
+        .cart-items {max-height: 70vh; overflow-y: auto;}
+        .cart-item {padding: 10px; border-bottom: 1px solid #444;}
+        .cart-total {margin-top: 20px; font-size: 18px; font-weight: bold; color: #fff;}
+        .close-cart {
+            background: #e60000;
+            padding: 8px 15px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            width: 100%;
+            font-weight: 700;
+        }
 
-    nav ul li a { 
-        color:white; 
-        text-decoration:none; 
-        font-size:16px; 
-        transition:.3s; 
-    }
+        .hero {
+            width: 100%;
+            height: 85vh;
+            position: relative;
+            background: linear-gradient(to right, #000 35%, rgba(0,0,0,0.1) 100%),
+                        url("https://i.pinimg.com/736x/39/35/d7/3935d74889456d213e95aa126ca55ac4.jpg") right center/contain no-repeat;
+            display: flex;
+            align-items: center;
+            padding-left: 5%;
+        }
+        .hero-content {max-width: 450px;}
+        .hero-content h2 {font-size: 48px; font-weight: 900; text-transform: uppercase;}
+        .btn {
+            margin-top: 25px;
+            display: inline-block;
+            padding: 14px 32px;
+            background: #ff3b30;
+            border-radius: 6px;
+            color: #fff;
+            font-weight: 700;
+            text-decoration: none;
+            transition: .3s;
+            font-size: 18px;
+        }
+        .btn:hover {background: #d62b22;}
 
-    nav ul li a:hover, nav ul li a.active { color:#e60000; }
+        .sobre {text-align: center; padding: 80px 20px;}
+        .sobre h2 {color: #e60000; font-size: 36px;}
 
-    #cart-btn { 
-        font-size:22px; 
-        cursor:pointer; 
-        color:#fff; 
-        display:inline-flex; 
-        align-items:center; 
-        gap:8px; 
-    }
+        .diferenciais {padding: 60px 20px; text-align: center;}
+        .dif-cards {display: flex; justify-content: center; flex-wrap: wrap; gap: 30px;}
+        .dif-card {
+            width: 300px;
+            padding: 25px;
+            background: #111;
+            border: 2px solid #e60000;
+            border-radius: 12px;
+            transition: .3s;
+        }
+        .dif-card:hover {transform: scale(1.05);}
 
-    #cart-count {
-        background:#e60000;
-        color:#fff;
-        padding:2px 7px;
-        border-radius:50%;
-        font-size:13px;
-        display:inline-block;
-        min-width:24px;
-        text-align:center;
-    }
+        footer {background: #111; text-align: center; padding: 20px 0; border-top: 2px solid #e60000; margin-top: 60px;}
 
-    .title-section { text-align:center; padding:40px 20px; }
-    .title-section h2 { font-size:36px; color:#e60000; }
-    .title-section p { margin-top:10px; color:#ccc; font-size:18px; }
-
-    .feedback-container {
-        max-width:900px;
-        margin:40px auto;
-        padding:20px;
-    }
-
-    .feedback-form {
-        background:#111;
-        border:2px solid #e60000;
-        border-radius:12px;
-        padding:30px;
-        margin-bottom:40px;
-    }
-
-    .feedback-form label {
-        display:block; font-size:18px; margin-bottom:10px; color:#e60000;
-    }
-
-    .feedback-form input, .feedback-form textarea {
-        width:100%; padding:12px; border-radius:8px; border:none; margin-bottom:20px; font-size:16px; background:#222; color:#fff;
-    }
-
-    .feedback-form textarea { height:130px; resize:none; }
-
-    .btn {
-        display:inline-block; padding:12px 25px; font-size:16px; border-radius:8px;
-        background:#e60000; color:#fff; text-decoration:none; transition:.3s; border:none; cursor:pointer; font-weight:bold;
-    }
-    .btn:hover { background:#b00000; }
-
-    .feedback-item {
-        background:#111;
-        border-left:4px solid #e60000;
-        border-radius:12px;
-        padding:20px;
-        margin-bottom:20px;
-        transition:.3s;
-    }
-
-    .feedback-item h3 { color:#e60000; margin-bottom:8px; }
-    .feedback-item p { color:#ddd; line-height:1.6; }
-
-    footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; color:#aaa; }
-
-    @media (max-width: 767px) {
-        nav { flex-direction: column; align-items: center; gap: 15px; }
-        nav ul { flex-direction: column; gap: 10px; }
-        header { position: relative; }
-        .feedback-form { width:90%; }
-    }
-
-    @media (min-width: 768px) {
-        nav { flex-direction: row; justify-content: space-between; }
-        nav ul { flex-direction: row; gap: 25px; }
-        header { position: sticky; }
-    }
-</style>
+        @media (max-width: 768px) {
+            nav {flex-direction: column; align-items: center; gap: 15px;}
+            nav ul {flex-direction: column; gap: 12px;}
+            header {position: relative;}
+            .hero {height: 70vh; background-position: center right -50px;}
+            .hero-content h2 {font-size: 32px;}
+            .dif-card {width: 90%;}
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <nav>
-        <h1>PROZMALHADOS</h1>
-        <ul>
-            <li><a href="index.html">Início</a></li>
-            <li><a href="planos.html" class="active">Planos</a></li>
-            <li><a href="produtooo.html">Produtos</a></li>
-            <li><a href="contato.html">Contato</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li><span id="cart-btn">🛒 <span id="cart-count">0</span></span></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <nav>
+            <h1>PROZMALHADOS</h1>
 
-<section class="title-section">
-    <h2>Feedback dos Alunos</h2>
-    <p>Veja o que nossos membros dizem e envie o seu também!</p>
-</section>
+            <ul>
+                <li><a href="index.html" class="active">Início</a></li>
+                <li><a href="planos.html">Planos</a></li>
+                <li><a href="produtooo.html">Produtos</a></li>
+                <li><a href="contato.html">Contato</a></li>
+                <li><a href="feedback.html">Feedback</a></li>
+                <li><span id="cart-btn">🛒</span></li>
+            </ul>
+        </nav>
+    </header>
 
-<div class="feedback-container">
-    <div class="feedback-form">
-        <label>Seu nome:</label>
-        <input type="text" placeholder="Digite seu nome">
-        <label>Seu feedback:</label>
-        <textarea placeholder="Escreva seu comentário..."></textarea>
-        <button class="btn">Enviar Feedback</button>
+    <div class="cart" id="cart">
+        <h2>Seu Carrinho</h2>
+        <div class="cart-items" id="cart-items"></div>
+        <p class="cart-total" id="cart-total">Total: R$ 0,00</p>
+        <button class="close-cart" id="close-cart">Fechar</button>
     </div>
 
-    <div class="feedback-item">
-        <h3>Maria</h3>
-        <p>A melhor academia, professores muito atenciosos!</p>
-    </div>
+    <section class="hero">
+        <div class="hero-content">
+            <h2>O corpo muda quando a mente decide não desistir.</h2>
+            <a href="planos.html" class="btn">Conhecer Planos</a>
+        </div>
+    </section>
 
-    <div class="feedback-item">
-        <h3>Carlos</h3>
-        <p>Equipamentos novos e ambiente muito organizado.</p>
-    </div>
-</div>
+    <section class="sobre">
+        <h2>Sobre a PROZMALHADOS</h2>
+        <p>
+            A PROZMALHADOS nasceu com o compromisso de transformar vidas através do treino, disciplina e evolução.
+            Aqui você encontra estrutura moderna, ambiente motivador, profissionais preparados e planos acessíveis.
+        </p>
+    </section>
 
-<footer>
-    <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
-</footer>
+    <section class="diferenciais">
+        <h2>Nossos Diferenciais</h2>
+        <div class="dif-cards">
+            <div class="dif-card">
+                <h3>💪 Equipamentos Profissionais</h3>
+                <p>Aparelhos modernos, seguros e preparados para qualquer nível de treino.</p>
+            </div>
+            <div class="dif-card">
+                <h3>🔥 Acompanhamento Completo</h3>
+                <p>Treinadores capacitados para acelerar sua evolução com qualidade.</p>
+            </div>
+            <div class="dif-card">
+                <h3>🏆 Resultados Reais</h3>
+                <p>Você evolui de verdade com treinos pensados para sua meta.</p>
+            </div>
+        </div>
+    </section>
 
-<script>
-function updateCartCount() {
-    const cartCountEl = document.getElementById('cart-count');
-    let carrinho = [];
-    try {
-        const data = localStorage.getItem('carrinho');
-        if (data) carrinho = JSON.parse(data);
-    } catch (e) {
-        console.error("Erro ao ler carrinho:", e);
-    }
-    cartCountEl.textContent = carrinho.length || 0;
-}
+    <footer>
+        <p>© 2025 PROZMALHADOS — Todos os direitos reservados.</p>
+    </footer>
 
-// Atualiza ao carregar
-updateCartCount();
-
-// Atualiza quando houver mudança no localStorage
-window.addEventListener('storage', updateCartCount);
-
-// Atualiza ao clicar no ícone do carrinho
-document.getElementById('cart-btn').addEventListener('click', updateCartCount);
-</script>
-
+    <script src="carrinho.js"></script>
 </body>
 </html>
-
