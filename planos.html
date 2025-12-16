@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Contato | PROZMALHADOS</title>
+<title>Feedback | PROZMALHADOS</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -11,7 +11,6 @@
     * {margin:0;padding:0;box-sizing:border-box;font-family:'Montserrat',sans-serif;}
     body {background:#000;color:#fff;}
 
-  
     header {
         width: 100%;
         background: #111;
@@ -52,9 +51,7 @@
         transition:.3s; 
     }
 
-    nav ul li a:hover, nav ul li a.active { 
-        color:#e60000; 
-    }
+    nav ul li a:hover, nav ul li a.active { color:#e60000; }
 
     #cart-btn { 
         font-size:22px; 
@@ -76,35 +73,33 @@
         text-align:center;
     }
 
-    
     .title-section { text-align:center; padding:40px 20px; }
     .title-section h2 { font-size:36px; color:#e60000; }
     .title-section p { margin-top:10px; color:#ccc; font-size:18px; }
 
- 
-    .contato-container {
-        max-width:1100px;
+    .feedback-container {
+        max-width:900px;
         margin:40px auto;
         padding:20px;
-        display:flex;
-        justify-content:center;
-        flex-wrap:wrap;
-        gap:40px;
     }
 
-    .contato-form {
+    .feedback-form {
         background:#111;
         border:2px solid #e60000;
         border-radius:12px;
         padding:30px;
-        width:450px;
+        margin-bottom:40px;
     }
 
-    .contato-form label { display:block; font-size:18px; margin-bottom:10px; color:#e60000; }
-    .contato-form input, .contato-form textarea {
+    .feedback-form label {
+        display:block; font-size:18px; margin-bottom:10px; color:#e60000;
+    }
+
+    .feedback-form input, .feedback-form textarea {
         width:100%; padding:12px; border-radius:8px; border:none; margin-bottom:20px; font-size:16px; background:#222; color:#fff;
     }
-    .contato-form textarea { height:120px; resize:none; }
+
+    .feedback-form textarea { height:130px; resize:none; }
 
     .btn {
         display:inline-block; padding:12px 25px; font-size:16px; border-radius:8px;
@@ -112,48 +107,31 @@
     }
     .btn:hover { background:#b00000; }
 
-    .info-box {
-        width:450px; background:#111; border:2px solid #e60000; border-radius:12px; padding:30px;
+    .feedback-item {
+        background:#111;
+        border-left:4px solid #e60000;
+        border-radius:12px;
+        padding:20px;
+        margin-bottom:20px;
+        transition:.3s;
     }
-    .info-box h3 { color:#e60000; margin-bottom:15px; font-size:24px; }
-    .info-item { margin-bottom:15px; font-size:18px; color:#ccc; }
-    .info-item span { color:#e60000; font-weight:bold; }
 
-    .contact-btn-container { display:flex; justify-content:center; margin:40px 0; }
+    .feedback-item h3 { color:#e60000; margin-bottom:8px; }
+    .feedback-item p { color:#ddd; line-height:1.6; }
 
-    footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; }
-    footer p { color:#aaa; }
+    footer { background:#111; text-align:center; padding:20px 0; border-top:2px solid #e60000; margin-top:60px; color:#aaa; }
 
-   
     @media (max-width: 767px) {
-        nav {
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-        nav ul {
-            flex-direction: column;
-            gap: 10px;
-        }
-      
-        header {
-            position: relative;
-        }
-        .contato-form, .info-box { width:90%; }
+        nav { flex-direction: column; align-items: center; gap: 15px; }
+        nav ul { flex-direction: column; gap: 10px; }
+        header { position: relative; }
+        .feedback-form { width:90%; }
     }
 
     @media (min-width: 768px) {
-        nav {
-            flex-direction: row;
-            justify-content: space-between;
-        }
-        nav ul {
-            flex-direction: row;
-            gap: 25px;
-        }
-        header {
-            position: sticky;
-        }
+        nav { flex-direction: row; justify-content: space-between; }
+        nav ul { flex-direction: row; gap: 25px; }
+        header { position: sticky; }
     }
 </style>
 </head>
@@ -162,57 +140,40 @@
 <header>
     <nav>
         <h1>PROZMALHADOS</h1>
-
         <ul>
             <li><a href="index.html">Início</a></li>
             <li><a href="planos.html">Planos</a></li>
             <li><a href="produtooo.html">Produtos</a></li>
-            <li><a href="contato.html" class="active">Contato</a></li>
-            <li><a href="feedback.html">Feedback</a></li>
-            <li>
-                <span id="cart-btn">🛒 <span id="cart-count">0</span></span>
-            </li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="feedback.html" class="active">Feedback</a></li>
+            <li><span id="cart-btn">🛒 <span id="cart-count">0</span></span></li>
         </ul>
     </nav>
 </header>
 
 <section class="title-section">
-    <h2>Fale Conosco</h2>
-    <p>Entre em contato com a PROZMALHADOS. Estamos aqui para te ajudar!</p>
+    <h2>Feedback dos Alunos</h2>
+    <p>Veja o que nossos membros dizem e envie o seu também!</p>
 </section>
 
-<div class="contato-container">
-
-    <div class="contato-form">
-        <label>Seu Nome:</label>
+<div class="feedback-container">
+    <div class="feedback-form">
+        <label>Seu nome:</label>
         <input type="text" placeholder="Digite seu nome">
-
-        <label>Seu Email:</label>
-        <input type="email" placeholder="Digite seu email">
-
-        <label>Mensagem:</label>
-        <textarea placeholder="Escreva sua mensagem..."></textarea>
-
-        <button class="btn">Enviar Mensagem</button>
+        <label>Seu feedback:</label>
+        <textarea placeholder="Escreva seu comentário..."></textarea>
+        <button class="btn">Enviar Feedback</button>
     </div>
 
-    <div class="info-box">
-        <h3>Informações de Contato</h3>
-
-        <div class="info-item"><span>📍 Endereço:</span> Rua Fitness 777, Centro</div>
-        <div class="info-item"><span>📞 Telefone:</span> (11) 9999-9999</div>
-        <div class="info-item"><span>📧 Email:</span> contato@prozmalhados.com</div>
-
-        <h3>Horário de Funcionamento</h3>
-        <p style="color:#ccc;">Segunda a Sexta — 06h às 22h</p>
-        <p style="color:#ccc;">Sábado — 08h às 18h</p>
-        <p style="color:#ccc;">Domingos e feriados — Fechado</p>
+    <div class="feedback-item">
+        <h3>Maria</h3>
+        <p>A melhor academia, professores muito atenciosos!</p>
     </div>
 
-</div>
-
-<div class="contact-btn-container">
-    <a href="feedback.html" class="btn">Deixe seu feedback</a>
+    <div class="feedback-item">
+        <h3>Carlos</h3>
+        <p>Equipamentos novos e ambiente muito organizado.</p>
+    </div>
 </div>
 
 <footer>
@@ -223,34 +184,18 @@
     function updateCartCountFromStorage() {
         try {
             const raw = localStorage.getItem('carrinho');
-            if (!raw) {
-                document.getElementById('cart-count').textContent = '0';
-                return;
-            }
+            if (!raw) { document.getElementById('cart-count').textContent = '0'; return; }
             const arr = JSON.parse(raw);
-            if (Array.isArray(arr)) {
-                document.getElementById('cart-count').textContent = arr.length;
-            } else {
-                document.getElementById('cart-count').textContent = '0';
-            }
-        } catch (e) {
-            document.getElementById('cart-count').textContent = '0';
-        }
+            if (Array.isArray(arr)) document.getElementById('cart-count').textContent = arr.length;
+            else document.getElementById('cart-count').textContent = '0';
+        } catch(e) { document.getElementById('cart-count').textContent = '0'; }
     }
 
     updateCartCountFromStorage();
-
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'carrinho') updateCartCountFromStorage();
-    });
-
-    document.getElementById('cart-btn').addEventListener('click', () => {
-        updateCartCountFromStorage();
-    });
+    window.addEventListener('storage', (e) => { if(e.key==='carrinho') updateCartCountFromStorage(); });
+    document.getElementById('cart-btn').addEventListener('click', updateCartCountFromStorage);
 </script>
 
 </body>
 </html>
-
-
 
